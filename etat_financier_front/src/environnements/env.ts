@@ -1,5 +1,5 @@
 export const apiUrl=()=>{
-    return "http://localhost:8083/api/";
+    return "http://localhost:8080";
 }
 export const imagesRoute=()=>{
   return "http://localhost:8083/api/";

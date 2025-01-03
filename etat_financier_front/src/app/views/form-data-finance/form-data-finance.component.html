@@ -2,15 +2,17 @@
     <div>
         <h1 class="text-3xl">Formulaire d'insertion des données financières</h1>
     </div>
-    <form [formGroup]="formGroup" class="w-full flex flex-col gap-4 justify-between items-center">
+    <form [formGroup]="formGroup" class="w-full flex flex-col gap-4 justify-between items-center" (ngSubmit)="onSubmit()">
 
         <div class="border w-full p-3 rounded-[10px]">
             <h1>Informations de l'entreprise</h1>
 <!--            <app-input-d-square class="w-full" label="Nom de l" formControlName="motDePasse"></app-input-d-square>-->
             <app-select-rounded
                     formControlName="idEntreprise"
-                    [valueKey]="'idEntreprise'"
-                    [labelKey]="'nomEntreprise'"
+                    [options]="entreprises"
+                    valueKey="idEntreprise"
+                    labelKey="nom"
+                    [disabled]="false"
                     label="Entreprise"
                     placeholder="Choisissez l'entreprise"
             ></app-select-rounded>
@@ -20,8 +22,11 @@
             <!--            <app-input-d-square class="w-full" label="Nom de l" formControlName="motDePasse"></app-input-d-square>-->
             <app-select-rounded
                     formControlName="idAnnee"
+                    [options]="annees"
                     [valueKey]="'idAnnee'"
-                    [labelKey]="'Annee'"
+                    [disabled]="false"
+
+                    [labelKey]="'annee'"
                     label="Année"
                     placeholder="Choisissez l'année"
             ></app-select-rounded>
