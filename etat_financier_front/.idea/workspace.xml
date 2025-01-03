@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7484dae-c347-4d31-8456-bea625e470fa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/interns/alter-diploma/alter-diploma.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/interns/alter-diploma/alter-diploma.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/home/home.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -30,16 +28,16 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "front/features/bilan-entreprise",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/ITU/S5/Gestion/etat_financier_front/recrutement-front",
+    "last_opened_file_path": "D:/ITU/S5/Gestion/etat_financier_front/etat_financier_front",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.Angular CLI Server.executor": "Run",
-    "ts.external.directory.path": "D:\\ITU\\S5\\Gestion\\etat_financier_front\\recrutement-front\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "D:\\ITU\\S5\\Gestion\\etat_financier_front\\etat_financier_front\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -80,6 +78,7 @@
       <updated>1731906730429</updated>
       <workItem from="1731906731726" duration="1184000" />
       <workItem from="1735886272602" duration="2929000" />
+      <workItem from="1735894509683" duration="972000" />
     </task>
     <servers />
   </component>
