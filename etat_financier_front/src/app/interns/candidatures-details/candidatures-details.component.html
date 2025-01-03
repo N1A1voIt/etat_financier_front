@@ -1,0 +1,102 @@
+<app-modal-array [showForm]="ouvrir" class="w-full">
+    <div class="min-h-[40vh] w-[50vw] flex items-left flex-col p-4 gap-4 mono-sans-thin">
+    <!-- <div class="grid grid-cols-1 gap-4">
+            <div class="flex justify-center items-center ">
+                <div class="bg-black p-4">
+                    <div class="text-white">
+                        <h1 class="uppercase text-4xl font-bold"></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2">
+                <div class="flex justify-center items-center flex-col col-span-1">
+                    <div class="flex justify-center items-center flex-col">
+                        <mat-icon>mail</mat-icon>
+                        <span class="uppercase text-2xl">Adresse</span>
+                    </div>
+                    <div>
+                        <p class="text-xl">alice.durand*example.com</p>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center flex-col col-span-1">
+                    <div class="flex justify-center items-center flex-col">
+                        <mat-icon>mail</mat-icon>
+                        <span class="uppercase text-2xl">Telephone</span>
+                    </div>
+                    <div>
+                        <p class="text-xl">0332030212</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!--Expériences-->
+        <h1>Expériences</h1>
+        <div class="flex justify-center items-center flex-col border-t border-black">
+            <div class="w-[80%] flex justify-center items-center gap-8 flex-col">
+                <div class="grid grid-cols-6" *ngFor="let item of cv.experiences">
+                    <div class="col-span-2">
+                        <h1>{{item.dateDebut}}</h1>
+                        <h1>{{item.dateFin}}</h1>
+                    </div>
+                    <div class="col-span-1">
+
+                    </div>
+                    <div class="col-span-3">
+                        <h1>{{item.titrePoste}} chez {{item.entreprise}}</h1>
+                        <span class="text-md font-semibold">
+                            {{item.description}}
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <h1>Etudes</h1>
+        <div class="flex justify-center items-center flex-col border-t border-black">
+            <div class="w-[80%] flex justify-center items-center gap-8 flex-col">
+                <div class="grid grid-cols-6" *ngFor="let item of cv.diplomes">
+                    <div class="col-span-2">
+                        <h1>{{item.dateObtention}}</h1>
+                    </div>
+                    <div class="col-span-1">
+
+                    </div>
+                    <div class="col-span-3">
+                        <h1>BAC + {{item.niveau}}</h1>
+                        <span class="text-md font-semibold">Ceci est un {{item.domaine.nom}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <!-- <div>
+        <h1 class="font-bold text-3xl">
+          <span class="uppercase"> à </span>la recherche de :
+        </h1>
+      </div>
+      <div class="p-4 flex items-left flex-col text-xl gap-4"> 
+        <div>
+          <h1 class="font-bold text-2xl">Développeurs fullstack</h1>
+        </div>
+        <div>
+          <h1 class="rounded-xl border h-fit w-fit p-3 border-gray-600">
+            Informatique
+          </h1>
+        </div>
+        <div>
+          <h1>Qualifications:</h1>
+          <span>-HTML, CSS, JavaScript, Java</span>
+        </div>
+        <div>
+          <h1>Expériences requise:</h1>
+          <span>-1 année</span>
+        </div>
+        <div>
+          <h1>Descriptions:</h1>
+          <span class="text-md font-semibold">-Developpement dapplications web et mobiles</span>
+        </div>
+        <div>Date de création:2024 Mon 12</div>
+      </div> -->
+    </div>
+  </app-modal-array>
+  

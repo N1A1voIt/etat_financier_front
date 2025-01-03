@@ -1,0 +1,39 @@
+<div class="w-full h-full flex flex-col items-center shadow-xl border p-8 px-20 gap-10 ">
+    <div>
+        <h1 class="text-3xl">Compte de résultat</h1>
+    </div>
+    <div class="w-full flex justify-between items-center">
+        <div>
+            <h1 class="font-bold text-xl">Nom de l'entreprise</h1>
+            <p class="text-md">Entreprise XYZ</p>
+        </div>
+        <div>
+            <h1 class="font-bold text-xl">Année d'exercice</h1>
+            <p class="text-md">2024</p>
+        </div>
+    </div>
+    <div class="w-full">
+        <div class="w-full h-full flex flex-col justify-center items-center ">
+            <div class="w-full rounded-xl overflow-hidden w-[90%]">
+                <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                    <ng-container matColumnDef="label">
+                        <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Libellé </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{ element.label }} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="amount">
+                        <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Montant ($) </mat-header-cell>
+                        <mat-cell *matCellDef="let element" class="mono-sans-thin"> {{ element.amount }} </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{ 'red-row': row.isBold }"></mat-row>
+
+
+                </mat-table>
+            </div>
+
+        </div>
+    </div>
+</div>

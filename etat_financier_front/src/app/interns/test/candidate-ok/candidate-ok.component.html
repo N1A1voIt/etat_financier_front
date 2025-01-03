@@ -1,0 +1,57 @@
+<div class="w-full h-full flex flex-col justify-center items-center">
+    <div class="rounded-xl overflow-hidden w-[90%]">
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> ID </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+        </ng-container>
+  
+        <!-- Candidate Column -->
+        <ng-container matColumnDef="candidat">
+          <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Candidat </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.candidat }}</mat-cell>
+        </ng-container>
+  
+        <!-- Job Title Column -->
+        <ng-container matColumnDef="poste">
+          <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Poste </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.poste }}</mat-cell>
+        </ng-container>
+  
+        <!-- Date of Application Column -->
+        <ng-container matColumnDef="score">
+          <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Score </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.score }}</mat-cell>
+        </ng-container>
+  
+        <!-- Status Column -->
+        <ng-container matColumnDef="date_test">
+          <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Date </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.date_test }}</mat-cell>
+        </ng-container>
+  
+        <!-- Action Column (Buttons) -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Actions </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="flex justify-around">
+            <button mat-button (click)="openDetails(element)" class="underline">Entretien ?</button>
+          </mat-cell>
+        </ng-container>
+  
+        <!-- Header and Rows -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+      <!-- Paginator -->
+      <mat-paginator
+        [length]="data.length"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 20]"
+        (page)="pageEvent($event)"
+      ></mat-paginator>
+      <app-form-date></app-form-date>
+    </div>
+    
+  </div>

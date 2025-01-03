@@ -1,0 +1,15 @@
+<app-modal-array class="mono-sans-thin" [showForm]="true">
+    <!-- <div class="p-4 h-[50vh]">
+      <label for="">Date du test:</label>
+      <p-calendar
+        [(ngModel)]="dateValue"
+        placeholder="Select a date"
+      ></p-calendar>
+    </div> -->
+    <div class="p-4 h-[30vh]">
+      <app-input-d-square label="Date" type="date"></app-input-d-square>
+      <app-input-d-square label="Commentaire" type="textarea"></app-input-d-square>
+      <app-submit-button label="Valider"></app-submit-button>
+    </div>
+  </app-modal-array>
+  

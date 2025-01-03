@@ -1,0 +1,46 @@
+<form
+  [formGroup]="step1Form"
+  (ngSubmit)="onSubmit()"
+  class="w-full flex justify-center items-center flex-col gap-3"
+>
+  <!-- Use formGroupName="candidat" to bind to the 'candidat' FormGroup -->
+  <div formGroupName="candidat" class="w-full">
+    <div class="grid grid-cols-2 gap-4 w-full">
+      <app-input-control
+        label="Nom"
+        formControlName="nom"
+      ></app-input-control>
+
+      <app-input-control
+        label="Prenom"
+        formControlName="prenom"
+      ></app-input-control>
+    </div>
+
+    <app-input-control
+      class="w-full"
+      label="E-mail"
+      placeholder=""
+      formControlName="email"
+    ></app-input-control>
+
+    <app-input-control
+      class="w-full"
+      label="Mot de passe"
+      formControlName="motDePasse"
+    ></app-input-control>
+    <app-input-control
+      class="w-full"
+      label="Téléphone"
+      formControlName="telephone"
+    ></app-input-control>
+  </div>
+
+  <app-submit-button class="w-full" label="Suivant"></app-submit-button>
+
+  <div>
+    <p>
+      Already have an account? <strong class="underline"><a>Sign In</a></strong>
+    </p>
+  </div>
+</form>

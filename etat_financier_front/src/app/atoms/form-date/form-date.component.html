@@ -1,0 +1,14 @@
+<app-modal-array class="mono-sans-thin" [showForm]="afficher">
+  <!-- <div class="p-4 h-[50vh]">
+    <label for="">Date du test:</label>
+    <p-calendar
+      [(ngModel)]="dateValue"
+      placeholder="Select a date"
+    ></p-calendar>
+  </div> -->
+  <form class="p-4 h-[30vh]" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="id">
+    <app-input-d-square label="Date" type="date" formControlName="date"></app-input-d-square>
+    <app-submit-button label="Valider"></app-submit-button>
+  </form>
+</app-modal-array>

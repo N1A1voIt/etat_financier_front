@@ -1,0 +1,23 @@
+
+<div *ngIf="showForm"  class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 bg-gray-500 bg-opacity-75 backdrop-blur-md w-full outline-none focus:outline-none justify-center items-center flex ">
+    <div class="relative w-full h-auto my-6 mx-auto max-w-6xl flex flex-col items-center justify-center">
+        <div class="border-0 rounded-lg shadow-lg relative flex flex-col items-center w-1/2 bg-white outline-none focus:outline-none">
+            <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                <h3 class="text-md font-semibold">
+                    Mise à jour : {{nom}}
+                </h3>
+                <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" >
+                  <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    ×
+                  </span>
+                </button>
+            </div>
+            <ng-content></ng-content>
+            <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="showForm= !showForm">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

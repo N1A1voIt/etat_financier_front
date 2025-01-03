@@ -1,0 +1,13 @@
+/* candidatures-list.component.css */
+button {
+    margin-right: 8px;
+  }
+  
+  .mat-header-cell {
+    font-weight: bold;
+  }
+  
+  .mat-cell {
+    padding: 8px;
+  }
+  
