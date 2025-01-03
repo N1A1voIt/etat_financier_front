@@ -12,6 +12,10 @@ export class FormDataFinanceService {
     console.log(json);
     return this.http.post<any>(`${this.apiUrl}/api/finance-form`, json);
   }
+  saveCompteResultatData(json:any){
+    console.log(json);
+    return this.http.post<any>(`${this.apiUrl}/api/compte-resultat`, json);
+  }
   enterpriseYear(){
     return this.http.get<any>(`${this.apiUrl}/api/yearCorp`);
   }

@@ -1,0 +1,30 @@
+<div class="w-full h-full flex flex-col items-center shadow-xl border p-8 px-20 gap-10 overflow-y-scroll">
+    <div>
+        <h1 class="text-3xl">Formulaire d'insertion des données financières</h1>
+    </div>
+    <form [formGroup]="formGroup" class="w-[75%] flex flex-col gap-4 justify-between items-begin" (ngSubmit)="onSubmit()">
+        <app-select-rounded
+                formControlName="idEntreprise"
+                [options]="entreprises"
+                valueKey="idEntreprise"
+                labelKey="nom"
+                [disabled]="false"
+                label="Entreprise"
+                placeholder="Choisissez l'entreprise"
+        ></app-select-rounded>
+        <app-select-rounded
+                formControlName="idAnnee"
+                [options]="annees"
+                [valueKey]="'idAnnee'"
+                [disabled]="false"
+                [labelKey]="'annee'"
+                label="Année"
+                placeholder="Choisissez l'année"
+        ></app-select-rounded>
+        <app-input-d-square formControlName="revenus" label="Revenus" type="number" ></app-input-d-square>
+        <app-input-d-square formControlName="impots" label="Impots" type="number" ></app-input-d-square>
+        <app-input-d-square formControlName="chargesFinancieres" label="Charges financières" type="number" ></app-input-d-square>
+        <app-input-d-square formControlName="chargesExploitation" label="Charges exploitations" type="number" ></app-input-d-square>
+        <app-submit-button label="Valider"></app-submit-button>
+    </form>
+</div>

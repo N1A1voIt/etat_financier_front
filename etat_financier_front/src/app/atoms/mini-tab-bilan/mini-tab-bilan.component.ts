@@ -37,6 +37,7 @@ export class MiniTabBilanComponent {
         { label: 'Service C', amount: 75 ,isBold: false },
         { label: 'Item D', amount: 90 ,isBold: false },
     ];
+
      dataSource = new MatTableDataSource<any>();
 
     displayedColumns: string[] = ['label', 'amount'];
