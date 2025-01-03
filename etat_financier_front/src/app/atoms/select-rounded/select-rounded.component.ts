@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input, forwardRef } from '@angular/core';
+import {ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-select-rounded',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './select-rounded.component.html',
-  styleUrl: './select-rounded.component.css',
+  styleUrls: ['./select-rounded.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -24,6 +24,8 @@ export class SelectRoundedComponent implements ControlValueAccessor {
   @Input() id!: string;
   @Input() label!: string;
   selectedValue: any;
+
+  // ControlValueAccessor methods
   private onChange: any = () => {};
   private onTouched: any = () => {};
 
@@ -42,7 +44,8 @@ export class SelectRoundedComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  onSelectionChange(value: any) {
+  // Handle selection change
+  onSelectionChange(value: any): void {
     this.selectedValue = value;
     this.onChange(value);  // Notify Angular forms about the change
   }
