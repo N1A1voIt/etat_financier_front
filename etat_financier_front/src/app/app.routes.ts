@@ -5,6 +5,7 @@ import { HomeComponent } from './views/home/home.component';
 import {ResultComponent} from "./views/result/result.component";
 import {BilanComponent} from "./views/bilan/bilan.component";
 import {EtatFinancierComponent} from "./views/etat-financier/etat-financier.component";
+import {FormDataFinanceComponent} from "./views/form-data-finance/form-data-finance.component";
 
 export const routes: Routes = [
     {path:'signup',component:IndexComponent},
@@ -13,6 +14,7 @@ export const routes: Routes = [
     {path: 'result',component:ResultComponent},
     {path: 'bilan',component:BilanComponent},
     {path: 'indicateur-financier',component:EtatFinancierComponent},
+    {path: 'form-financier',component:FormDataFinanceComponent},
     // {path: 'home',component:HomeComponent},
     // {path:'bon-commande-',component:BonCommandeClientComponent,canActivate:[pasSousFifreGuardGuard]}
 ];

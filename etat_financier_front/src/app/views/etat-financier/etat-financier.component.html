@@ -2,7 +2,7 @@
     <div>
         <h1 class="text-3xl">Indicateur financier</h1>
     </div>
-    <div class="w-full flex justify-between items-center">
+    <form class="w-full flex justify-between items-center">
         <div class="w-[300px]">
             <h1 class="font-bold text-xl">Nom de l'entreprise</h1>
             <app-select-rounded
@@ -22,7 +22,8 @@
                     type="date"
             ></app-input-d-square>
         </div>
-    </div>
+        <app-submit-button label="Valider"></app-submit-button>
+    </form>
     <div class="w-full flex flex-col gap-4 justify-between items-center">
         <app-collapsible></app-collapsible>
         <app-collapsible></app-collapsible>
