@@ -7,6 +7,9 @@
     <list default="true" id="e7484dae-c347-4d31-8456-bea625e470fa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/atoms/select-rounded/select-rounded.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/atoms/select-rounded/select-rounded.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/bilan/bilan.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/bilan/bilan.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/home/home.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +31,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "front/features/bilan-entreprise",
+    "git-widget-placeholder": "dev",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/ITU/S5/Gestion/etat_financier_front/etat_financier_front",
     "node.js.detected.package.eslint": "true",
@@ -78,7 +81,7 @@
       <updated>1731906730429</updated>
       <workItem from="1731906731726" duration="1184000" />
       <workItem from="1735886272602" duration="2929000" />
-      <workItem from="1735894509683" duration="972000" />
+      <workItem from="1735895874477" duration="2356000" />
     </task>
     <servers />
   </component>

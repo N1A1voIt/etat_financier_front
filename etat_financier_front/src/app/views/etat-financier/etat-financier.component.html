@@ -1,0 +1,31 @@
+<div class="w-full h-full flex flex-col items-center shadow-xl border p-8 px-20 gap-10 overflow-y-scroll">
+    <div>
+        <h1 class="text-3xl">Indicateur financier</h1>
+    </div>
+    <div class="w-full flex justify-between items-center">
+        <div class="w-[300px]">
+            <h1 class="font-bold text-xl">Nom de l'entreprise</h1>
+            <app-select-rounded
+                    formControlName="domaineId"
+                    [valueKey]="'domaineId'"
+                    [labelKey]="'nom'"
+                    label="Domaine"
+                    placeholder="Choisissez le domaine"
+            ></app-select-rounded>
+        </div>
+        <div class="w-[300px]">
+            <h1 class="font-bold text-xl">Année d'exercice</h1>
+            <app-input-d-square
+                    label="Date obtention"
+                    [disabled]="false"
+                    formControlName="dateObtention"
+                    type="date"
+            ></app-input-d-square>
+        </div>
+    </div>
+    <div class="w-full flex flex-col gap-4 justify-between items-center">
+        <app-collapsible></app-collapsible>
+        <app-collapsible></app-collapsible>
+        <app-collapsible></app-collapsible>
+    </div>
+</div>
