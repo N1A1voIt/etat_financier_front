@@ -5,6 +5,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {SelectRoundedComponent} from "../../atoms/select-rounded/select-rounded.component";
 import {InputDSquareComponent} from "../../atoms/input-d-square/input-d-square.component";
 import {CollapsibleComponent} from "../../atoms/collapsible/collapsible.component";
+import {SubmitButtonComponent} from "../../../reusable/submit-button/submit-button.component";
 
 @Component({
   selector: 'app-etat-financier',
@@ -15,7 +16,8 @@ import {CollapsibleComponent} from "../../atoms/collapsible/collapsible.componen
         ReactiveFormsModule,
         SelectRoundedComponent,
         InputDSquareComponent,
-        CollapsibleComponent
+        CollapsibleComponent,
+        SubmitButtonComponent
     ],
   templateUrl: './etat-financier.component.html',
   styleUrl: './etat-financier.component.css'
