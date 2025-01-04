@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {MiniTabBilanComponent} from "../../atoms/mini-tab-bilan/mini-tab-bilan.component";
 import {CollapsibleComponent} from "../../atoms/collapsible/collapsible.component";
 import {
@@ -12,6 +12,8 @@ import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {SelectRoundedComponent} from "../../atoms/select-rounded/select-rounded.component";
 import {SubmitButtonComponent} from "../../../reusable/submit-button/submit-button.component";
 import {FormDataFinanceService} from "../form-data-finance/form-data-finance-service.service";
+import {BilanService} from "./bilan.service";
+import {NgIf} from "@angular/common";
 @Component({
   selector: 'app-bilan',
   standalone: true,
@@ -27,7 +29,8 @@ import {FormDataFinanceService} from "../form-data-finance/form-data-finance-ser
         PaginatorModule,
         ReactiveFormsModule,
         SelectRoundedComponent,
-        SubmitButtonComponent
+        SubmitButtonComponent,
+        NgIf
     ],
   templateUrl: './bilan.component.html',
   styleUrl: './bilan.component.css'
@@ -37,14 +40,24 @@ export class BilanComponent implements OnInit{
     data:any;
     entreprises:any;
     annees:any;
-    constructor(public formBuilder: FormBuilder,private formService:FormDataFinanceService) {
+    bilan:any
+    constructor(public formBuilder: FormBuilder,private formService:FormDataFinanceService,private bilanService:BilanService,private cdr:ChangeDetectorRef) {
+        console.log(this.bilan)
         this.formGroup = formBuilder.group({
             idEntreprise:[""],
             idAnnee:[""]
         })
     }
     onSubmit(){
-
+        this.bilanService.getBilan(this.formGroup.value).subscribe({
+            next:(response)=>{
+                this.bilan = response;
+                this.cdr.detectChanges();
+            },error:(error)=>{
+                console.log(error);
+                alert(error);
+            }
+        })
     }
 
     ngOnInit(): void {

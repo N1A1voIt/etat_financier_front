@@ -26,17 +26,15 @@
             <app-submit-button label="Rechercher"></app-submit-button>
         </div>
     </form>
-    <div class="w-full grid grid-cols-2 gap-6">
+    <div class="w-full grid grid-cols-2 gap-6" *ngIf="bilan!=undefined">
         <div class="col-span-1 flex flex-col gap-6">
-            <app-mini-tab-bilan></app-mini-tab-bilan>
-            <app-mini-tab-bilan></app-mini-tab-bilan>
-
+            <app-mini-tab-bilan title="Actifs courants" [data]="bilan.ActifCourant"></app-mini-tab-bilan>
+            <app-mini-tab-bilan title="Actifs immobilisés" [data]="bilan.ActifImmobilise"></app-mini-tab-bilan>
         </div>
         <div class="col-span-1 flex flex-col gap-6">
-            <app-mini-tab-bilan></app-mini-tab-bilan>
-            <app-mini-tab-bilan></app-mini-tab-bilan>
-            <app-mini-tab-bilan></app-mini-tab-bilan>
-            <app-mini-tab-bilan></app-mini-tab-bilan>
+            <app-mini-tab-bilan title="Passifs" [data]="bilan.Passif" ></app-mini-tab-bilan>
+            <app-mini-tab-bilan title="Passifs non courants" [data]="bilan.PassifNonCourant"></app-mini-tab-bilan>
+            <app-mini-tab-bilan title="Capitaux propres" [data]="bilan.CapitauxPropres"></app-mini-tab-bilan>
         </div>
         <div class="col-span-2">
             Total

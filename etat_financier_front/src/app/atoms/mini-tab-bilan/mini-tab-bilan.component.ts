@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {
     MatCell,
     MatCellDef,
@@ -8,7 +8,7 @@ import {
     MatHeaderRowDef,
     MatRow, MatRowDef, MatTable, MatTableDataSource, MatTableModule
 } from "@angular/material/table";
-import {NgClass} from "@angular/common";
+import {CommonModule, NgClass} from "@angular/common";
 import {data} from "autoprefixer";
 
 @Component({
@@ -26,22 +26,26 @@ import {data} from "autoprefixer";
         MatTable,
         NgClass,
         MatTableModule,
+        CommonModule
     ],
   templateUrl: './mini-tab-bilan.component.html',
   styleUrl: './mini-tab-bilan.component.css'
 })
-export class MiniTabBilanComponent {
-    @Input() data: any[] = [
-        { label: 'Product A', amount: 120 ,isBold: false },
-        { label: 'Product B', amount: 250 , isBold: true },
-        { label: 'Service C', amount: 75 ,isBold: false },
-        { label: 'Item D', amount: 90 ,isBold: false },
-    ];
+export class MiniTabBilanComponent implements OnChanges {
+    @Input() data: any; // Input property to receive data
+    @Input() title: string = '';
+    dataSource = new MatTableDataSource<any>(); // Data source for the table
+    displayedColumns: string[] = ['label', 'amount']; // Columns to display
 
-     dataSource = new MatTableDataSource<any>();
-
-    displayedColumns: string[] = ['label', 'amount'];
     constructor() {
-        this.dataSource.data = this.data;
+        console.log('Constructor called');
+    }
+
+    // Lifecycle hook to detect changes to @Input() properties
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log('ngOnChanges called', changes);
+        if (changes['data'] && this.data) {
+            this.dataSource.data = this.data; // Update the data source when data changes
+        }
     }
 }
