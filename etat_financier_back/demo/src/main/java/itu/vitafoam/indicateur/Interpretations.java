@@ -2,92 +2,119 @@ package itu.vitafoam.indicateur;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.math.BigDecimal;
+
 public class Interpretations {
     @JsonProperty("id_entreprise")
-    private int idEntreprise;
+    private Integer idEntreprise;
 
     @JsonProperty("id_annee")
-    private int idAnnee;
+    private Integer idAnnee;
 
     @JsonProperty("marge_nette")
-    private double margeNette;
+    private BigDecimal margeNette;
 
     @JsonProperty("retour_sur_actifs")
-    private double retourSurActifs;
+    private BigDecimal retourSurActifs;
 
     @JsonProperty("ratio_liquidite_generale")
-    private double ratioLiquiditeGenerale;
+    private BigDecimal ratioLiquiditeGenerale;
 
     @JsonProperty("ratio_liquidite_reduite")
-    private double ratioLiquiditeReduite;
+    private BigDecimal ratioLiquiditeReduite;
 
     @JsonProperty("ratio_endettement_global")
-    private double ratioEndettementGlobal;
+    private BigDecimal ratioEndettementGlobal;
 
-    @JsonProperty("couverture_interets")
-    private double couvertureInterets;
+    @JsonProperty("couverture_Integererets")
+    private BigDecimal couvertureInterets;
 
-    public int getIdEntreprise() {
+    public Integer getIdEntreprise() {
         return idEntreprise;
     }
 
-    public void setIdEntreprise(int idEntreprise) {
+    public void setIdEntreprise(Integer idEntreprise) {
         this.idEntreprise = idEntreprise;
     }
 
-    public int getIdAnnee() {
+    public Integer getIdAnnee() {
         return idAnnee;
     }
 
-    public void setIdAnnee(int idAnnee) {
+    public void setIdAnnee(Integer idAnnee) {
         this.idAnnee = idAnnee;
     }
 
-    public double getMargeNette() {
+    public BigDecimal getMargeNette() {
         return margeNette;
     }
 
-    public void setMargeNette(double margeNette) {
+    public void setMargeNette(BigDecimal margeNette) {
         this.margeNette = margeNette;
     }
 
-    public double getRetourSurActifs() {
+    public BigDecimal getRetourSurActifs() {
         return retourSurActifs;
     }
 
-    public void setRetourSurActifs(double retourSurActifs) {
+    public void setRetourSurActifs(BigDecimal retourSurActifs) {
         this.retourSurActifs = retourSurActifs;
     }
 
-    public double getRatioLiquiditeGenerale() {
+    public BigDecimal getRatioLiquiditeGenerale() {
         return ratioLiquiditeGenerale;
     }
 
-    public void setRatioLiquiditeGenerale(double ratioLiquiditeGenerale) {
+    public void setRatioLiquiditeGenerale(BigDecimal ratioLiquiditeGenerale) {
         this.ratioLiquiditeGenerale = ratioLiquiditeGenerale;
     }
 
-    public double getRatioLiquiditeReduite() {
+    public BigDecimal getRatioLiquiditeReduite() {
         return ratioLiquiditeReduite;
     }
 
-    public void setRatioLiquiditeReduite(double ratioLiquiditeReduite) {
+    public void setRatioLiquiditeReduite(BigDecimal ratioLiquiditeReduite) {
         this.ratioLiquiditeReduite = ratioLiquiditeReduite;
     }
 
-    public double getRatioEndettementGlobal() {
+    public BigDecimal getRatioEndettementGlobal() {
         return ratioEndettementGlobal;
     }
 
-    public void setRatioEndettementGlobal(double ratioEndettementGlobal) {
+    public void setRatioEndettementGlobal(BigDecimal ratioEndettementGlobal) {
         this.ratioEndettementGlobal = ratioEndettementGlobal;
     }
 
-    public double getCouvertureInterets() {
+    public BigDecimal getCouvertureInterets() {
         return couvertureInterets;
     }
 
-    public void setCouvertureInterets(double couvertureInterets) {
+    public void setCouvertureInterets(BigDecimal couvertureInterets) {
+        this.couvertureInterets = couvertureInterets;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"idEntreprise\":" + idEntreprise +
+                ", \"idAnnee\":" + idAnnee +
+                ",\"margeNette\":" + margeNette +
+                ", \"retourSurActifs\":" + retourSurActifs +
+                ", \"ratioLiquiditeGenerale\":" + ratioLiquiditeGenerale +
+                ", \"ratioLiquiditeReduite\":" + ratioLiquiditeReduite +
+                ", \"ratioEndettementGlobal\":" + ratioEndettementGlobal +
+                ", \"couvertureInterets\":" + couvertureInterets +
+                '}';
+    }
+
+    public Interpretations(Integer idEntreprise, Integer idAnnee, BigDecimal margeNette, BigDecimal retourSurActifs, BigDecimal ratioLiquiditeGenerale, BigDecimal ratioLiquiditeReduite, BigDecimal ratioEndettementGlobal, BigDecimal couvertureInterets) {
+        this.idEntreprise = idEntreprise;
+        this.idAnnee = idAnnee;
+        this.margeNette = margeNette;
+        this.retourSurActifs = retourSurActifs;
+        this.ratioLiquiditeGenerale = ratioLiquiditeGenerale;
+        this.ratioLiquiditeReduite = ratioLiquiditeReduite;
+        this.ratioEndettementGlobal = ratioEndettementGlobal;
         this.couvertureInterets = couvertureInterets;
     }
 }

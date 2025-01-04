@@ -6,15 +6,15 @@
             </div>
         </mat-panel-title>
         <mat-panel-description>
-           Marge nette a un ratio de 12.5
+           {{ indicator.label }} a un ratio de {{ indicator.ratio }}
         </mat-panel-description>
     </mat-expansion-panel-header>
     <div class="flex justify-center items-begin flex-col gap-4">
         <h1 class="text-xl">Interpretation</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias aspernatur corporis inventore, molestiae quidem similique soluta unde voluptatem voluptatibus. Cum dolore, error nisi officia quas qui quidem repellat rerum?</p>
+        <p>{{ indicator.interpretation }}</p>
     </div>
     <div class="flex justify-center items-begin flex-col gap-4 mt-3">
         <h1 class="text-xl">Solution</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias aspernatur corporis inventore, molestiae quidem similique soluta unde voluptatem voluptatibus. Cum dolore, error nisi officia quas qui quidem repellat rerum?</p>
+        <p>{{ indicator.solution }}</p>
     </div>
 </mat-expansion-panel>
