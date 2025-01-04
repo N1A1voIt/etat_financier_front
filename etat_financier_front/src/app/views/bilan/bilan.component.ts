@@ -48,6 +48,42 @@ export class BilanComponent implements OnInit{
             idAnnee:[""]
         })
     }
+
+    calculateTotalActifs() {
+        let totalActifs = 0;
+
+        this.bilan.ActifCourant.forEach((item: { label:string,amount: number,isBold:boolean }) => {
+            totalActifs += item.amount;
+        });
+
+        this.bilan.ActifImmobilise.forEach((item: { label:string,amount: number,isBold:boolean }) => {
+            totalActifs += item.amount;
+        });
+
+        return totalActifs;
+    }
+
+    calculateTotalPassifs() {
+        let totalPassifs = 0;
+
+        // Sum up Passif
+        this.bilan.Passif.forEach((item: { label:string,amount: number,isBold:boolean }) => {
+            totalPassifs += item.amount;
+        });
+
+        // Sum up PassifNonCourant
+        this.bilan.PassifNonCourant.forEach((item: { label:string,amount: number,isBold:boolean }) => {
+            totalPassifs += item.amount;
+        });
+
+        // Sum up CapitauxPropres
+        this.bilan.CapitauxPropres.forEach((item: { label:string,amount: number,isBold:boolean }) => {
+            totalPassifs += item.amount;
+        });
+
+        return totalPassifs;
+    }
+
     onSubmit(){
         this.bilanService.getBilan(this.formGroup.value).subscribe({
             next:(response)=>{
