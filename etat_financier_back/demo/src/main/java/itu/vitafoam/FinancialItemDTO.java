@@ -1,5 +1,7 @@
 package itu.vitafoam;
 
+import java.math.BigDecimal;
+
 public class FinancialItemDTO {
     private String label;
     private BigDecimal amount;
