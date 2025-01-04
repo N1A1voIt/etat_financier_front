@@ -2,16 +2,30 @@
     <div>
         <h1 class="text-3xl">Bilan de l'entreprise</h1>
     </div>
-    <div class="w-full flex justify-between items-center">
-        <div>
-            <h1 class="font-bold text-xl">Nom de l'entreprise</h1>
-            <p class="text-md">Entreprise XYZ</p>
+    <form [formGroup]="formGroup" class="w-full flex justify-between items-center" (ngSubmit)="onSubmit()">
+        <div class="w-full">
+
+            <app-select-rounded
+                    formControlName="idEntreprise"
+                    [options]="entreprises"
+                    valueKey="idEntreprise"
+                    labelKey="nom"
+                    [disabled]="false"
+                    label="Entreprise"
+                    placeholder="Choisissez l'entreprise"
+            ></app-select-rounded>
+            <app-select-rounded
+                    formControlName="idAnnee"
+                    [options]="annees"
+                    [valueKey]="'idAnnee'"
+                    [disabled]="false"
+                    [labelKey]="'annee'"
+                    label="Année"
+                    placeholder="Choisissez l'année"
+            ></app-select-rounded>
+            <app-submit-button label="Rechercher"></app-submit-button>
         </div>
-        <div>
-            <h1 class="font-bold text-xl">Année d'exercice</h1>
-            <p class="text-md">2024</p>
-        </div>
-    </div>
+    </form>
     <div class="w-full grid grid-cols-2 gap-6">
         <div class="col-span-1 flex flex-col gap-6">
             <app-mini-tab-bilan></app-mini-tab-bilan>

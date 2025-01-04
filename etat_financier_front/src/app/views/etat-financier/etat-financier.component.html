@@ -3,25 +3,28 @@
         <h1 class="text-3xl">Indicateur financier</h1>
     </div>
     <form [formGroup]="formGroup" class="w-full flex justify-between items-center" (ngSubmit)="onSubmit()">
-        <app-select-rounded
-                formControlName="idEntreprise"
-                [options]="entreprises"
-                valueKey="idEntreprise"
-                labelKey="nom"
-                [disabled]="false"
-                label="Entreprise"
-                placeholder="Choisissez l'entreprise"
-        ></app-select-rounded>
-        <app-select-rounded
-                formControlName="idAnnee"
-                [options]="annees"
-                [valueKey]="'idAnnee'"
-                [disabled]="false"
-                [labelKey]="'annee'"
-                label="Année"
-                placeholder="Choisissez l'année"
-        ></app-select-rounded>
-        <app-submit-button label="Valider"></app-submit-button>
+        <div class="w-full">
+
+            <app-select-rounded
+                    formControlName="idEntreprise"
+                    [options]="entreprises"
+                    valueKey="idEntreprise"
+                    labelKey="nom"
+                    [disabled]="false"
+                    label="Entreprise"
+                    placeholder="Choisissez l'entreprise"
+            ></app-select-rounded>
+            <app-select-rounded
+                    formControlName="idAnnee"
+                    [options]="annees"
+                    [valueKey]="'idAnnee'"
+                    [disabled]="false"
+                    [labelKey]="'annee'"
+                    label="Année"
+                    placeholder="Choisissez l'année"
+            ></app-select-rounded>
+            <app-submit-button label="Rechercher"></app-submit-button>
+        </div>
     </form>
     <div class="w-full flex flex-col gap-4 justify-between items-center">
         <div *ngIf="isLoading" class="cssload-container">
