@@ -55,7 +55,7 @@ public class AiService {
                 "    BigDecimal ratio;\n" +
                 "    String interpretation;\n" +
                 "    String solution;\n" +
-                ".\n\nonly return the json .Ratios:\n" + query);
+                ".\n\nonly return the json.Make the results in french .Ratios:\n" + query);
 
         requestBody.put("messages", new Map[]{systemMessage, userMessage});
 
