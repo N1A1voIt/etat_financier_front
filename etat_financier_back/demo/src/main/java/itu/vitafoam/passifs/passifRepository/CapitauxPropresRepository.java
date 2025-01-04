@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CapitauxPropresRepository extends JpaRepository<CapitauxPropres, Long> {
+    @Query("SELECT c FROM CapitauxPropres c WHERE c.idBilan = :idBilan")
+    List<CapitauxPropres> findByBilan(Long idBilan);
 }

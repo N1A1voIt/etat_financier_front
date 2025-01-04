@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PassifNonCourantRepository extends JpaRepository<PassifNonCourant, Long> {
+    @Query("SELECT pnc FROM PassifNonCourant pnc WHERE pnc.idBilan = :idBilan")
+    List<PassifNonCourant> findByBilan(Long idBilan);
 }
