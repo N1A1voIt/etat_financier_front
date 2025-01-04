@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ActifCourantRepository extends JpaRepository<ActifCourant, Long> {
+    @Query("SELECT ac FROM ActifCourant ac WHERE ac.idBilan = :idBilan")
+    List<ActifCourant> findByBilan(Long idBilan);
 }

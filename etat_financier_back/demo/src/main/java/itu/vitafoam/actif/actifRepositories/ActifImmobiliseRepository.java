@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ActifImmobiliseRepository extends JpaRepository<ActifImmobilise, Long> {
+    @Query("SELECT ai FROM ActifImmobilise ai WHERE ai.idBilan = :idBilan")
+    List<ActifImmobilise> findByBilan(Long idBilan);
 }
