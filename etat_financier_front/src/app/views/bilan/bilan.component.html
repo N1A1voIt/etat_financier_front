@@ -37,7 +37,8 @@
             <app-mini-tab-bilan title="Capitaux propres" [data]="bilan.CapitauxPropres"></app-mini-tab-bilan>
         </div>
         <div class="col-span-2">
-            Total
+            -Total Actif: {{calculateTotalActifs() }}
+            -Total Passifs: {{calculateTotalPassifs() }}
         </div>
     </div>
 </div>
