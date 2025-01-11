@@ -1,8 +1,10 @@
 CREATE TABLE type(
    id_type SERIAL,
    nom VARCHAR(50)  NOT NULL,
+   est_actif BOOLEAN NOT NULL,
    PRIMARY KEY(id_type)
 );
+
 
 CREATE TABLE section_resultat(
    numero_section INTEGER,
