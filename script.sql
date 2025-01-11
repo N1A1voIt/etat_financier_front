@@ -59,9 +59,26 @@ INSERT INTO section_resultat (numero_section, libelle, sql_query) VALUES
 (11, 'Résultat net de l ensemble consolidé', 
  'SELECT coalesce(SUM(montant),0) FROM compte_resultat WHERE numero_section = 11');
 
+CREATE OR REPLACE FUNCTION calculate_section_result(section_id INTEGER)
+RETURNS NUMERIC AS $$
+DECLARE
+    result NUMERIC;
+    query TEXT;
+BEGIN
+    SELECT sql_query INTO query
+    FROM section_resultat
+    WHERE numero_section = section_id;
 
- CREATE VIEW vue_compte_resultat AS
+    EXECUTE query INTO result;
+
+    RETURN result;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE VIEW vue_compte_resultat AS
 SELECT 
-    sr.libelle AS section, EXECUTE IMMEDIATE sr.formula AS montant_total
+    sr.numero_section,
+    sr.libelle AS section,
+    calculate_section_result(sr.numero_section) AS montant_total
 FROM section_resultat sr;
 
