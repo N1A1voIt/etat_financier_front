@@ -41,6 +41,40 @@ CREATE TABLE compte_resultat(
 );
 
 
+
+INSERT INTO compte_resultat (rubrique, est_important, montant, numero_section) VALUES
+('CA', FALSE, 0, 1),   -- Chiffre d'affaire
+('PS', FALSE, 0, 1),   -- Production stockée
+('PI', FALSE, 0, 1),   -- Production immobilisée
+-- ('P1', TRUE, 0, 0),    -- I - Production de l'exercice
+('AC', FALSE, 0, 2),   -- Achats consommés
+('SE', FALSE, 0, 2),   -- Services extérieurs
+-- ('C2', TRUE, 0, 0),    -- II - Consommation de l'exercice
+-- ('V3', TRUE, 0, 0),    -- III - Valeur ajoutée d'exploitation
+('CP', FALSE, 0, 3),   -- Charges de personnel
+('IT', FALSE, 0, 3),   -- Impots, taxes et versement assimilés
+-- ('E4', TRUE, 0, 0),    -- IV - Exédents brut d'exploitation
+('AO', FALSE, 0, 4),   -- Autres produits opérationnels
+('CO', FALSE, 0, 5),   -- Autres charges opérationnels
+('DP', FALSE, 0, 5),   -- Dotations aux amortissements, aux provisions et aux pertes de valeurs
+('RP', FALSE, 0, 6),   -- Reprises aux provisions et aux pertes de valeur
+-- ('R5', TRUE, 0, 0),    -- V - Résultat opérationnel
+('PF', FALSE, 0, 7),   -- Produits financiers
+('CF', FALSE, 0, 8),   -- Charges financières
+-- ('F6', TRUE, 0, 0),    -- VI - Résultat financier
+-- ('AI', TRUE, 0, 0),    -- VII - Résultat avant impôt
+('IE', FALSE, 0, 9),   -- Impôts exigibles sur résultat
+('ID', FALSE, 0, 9),   -- Impôts différés (Variations)
+-- ('TP', TRUE, 0, 0),    -- Totat des produits des activités ordinaires
+-- ('TC', TRUE, 0, 0),    -- Total des charges des activités ordinaires
+-- ('RN', TRUE, 0, 0),    -- VII - Résultat net des activités ordinaires
+('EP', FALSE, 0, 10),  -- Elements extraordinaires (Produits)
+('EC', FALSE, 0, 11);  -- Elements extraordinaires (charges)
+-- ('RX', TRUE, 0, 0),    -- IX - Résultat extraordinaire
+-- ('NX', TRUE, 0, 0);    -- X - Résultat net de l'exercice
+
+
+
 CREATE OR REPLACE FUNCTION calculate_section_result(section_id INTEGER)
 RETURNS NUMERIC AS $$
 DECLARE
