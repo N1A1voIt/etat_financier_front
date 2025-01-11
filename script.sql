@@ -39,8 +39,7 @@ INSERT INTO section_resultat (numero_section, libelle, sql_query) VALUES
 (2, 'Consommation de l exercice', 
  'SELECT coalesce(SUM(montant),0) FROM compte_resultat WHERE numero_section = 2'),
 (3, 'Valeur ajoutée d exploitation (I - II)', 
- '(SELECT coalesce(SUM(montant),0) FROM compte_resultat WHERE numero_section = 1) - 
-  (SELECT coalesce(SUM(montant),0) FROM compte_resultat WHERE numero_section = 2)'),
+ 'SELECT (SELECT COALESCE(SUM(montant), 0) FROM compte_resultat  WHERE numero_section = 1) -  (SELECT COALESCE(SUM(montant), 0)  FROM compte_resultat  WHERE numero_section = 2); '),
 (4, 'Excédent brut d exploitation', 
  'SELECT coalesce(SUM(montant),0) FROM compte_resultat WHERE numero_section = 4'),
 (5, 'Résultat opérationnel', 
@@ -48,8 +47,7 @@ INSERT INTO section_resultat (numero_section, libelle, sql_query) VALUES
 (6, 'Résultat financier', 
  'SELECT coalesce(SUM(montant),0) FROM compte_resultat WHERE numero_section = 6'),
 (7, 'Résultat avant impôts (V + VI)', 
- '(SELECT coalesce(SUM(montant),0) FROM compte_resultat WHERE numero_section = 5) + 
-  (SELECT coalesce(SUM(montant),0) FROM compte_resultat WHERE numero_section = 6)'),
+ 'SELECT (SELECT COALESCE(SUM(montant), 0) FROM compte_resultat WHERE numero_section = 5) + (SELECT COALESCE(SUM(montant), 0) FROM compte_resultat WHERE numero_section = 6) AS total'),
 (8, 'Résultat net des activités ordinaires', 
  'SELECT coalesce(SUM(montant),0) FROM compte_resultat WHERE numero_section = 8'),
 (9, 'Résultat extraordinaire', 
