@@ -4,6 +4,7 @@ import {CommonModule, NgForOf, NgIf} from "@angular/common";
 import {MatExpansionPanel, MatExpansionPanelHeader} from "@angular/material/expansion";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {InputDSquareComponent} from "../input-d-square/input-d-square.component";
+import {RubriquesService} from "../../views/part-2/services/rubriques.service";
 
 @Component({
   selector: 'app-tree',
@@ -24,7 +25,7 @@ export class TreeComponent implements OnChanges {
   @Input() rubriques: Rubrique[]|undefined;
   addForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private rubriqueService:RubriquesService) {
     this.addForm = this.fb.group({
       rubrique: ['', Validators.required],
       montant: [null, [Validators.required, Validators.min(0)]]
@@ -56,12 +57,12 @@ export class TreeComponent implements OnChanges {
       return;
     }
     const newRubrique: Rubrique = {
-      id_rubrique: 1,
+      idRubrique: undefined,
       rubrique: this.addForm.value.rubrique,
       montant: this.addForm.value.montant,
-      n_compte: undefined,
-      id_type: parent.id_type,
-      id_rubrique_1: parent.id_rubrique,
+      nCompte: undefined,
+      idType: parent.idType,
+      idRubriqueMere: parent.idRubrique,
       children: [],
       showAddForm: false,
       expanded: false
@@ -72,6 +73,11 @@ export class TreeComponent implements OnChanges {
     }
     parent.children.push(newRubrique);
     parent.showAddForm = false;
+    this.rubriqueService.save(newRubrique).subscribe({
+      next: (response) => {
+        console.log(response);
+      }
+    });
   }
   private handleRubriquesChange(rubriques: Rubrique[]): void {
     console.log('Handling rubriques change:', rubriques);

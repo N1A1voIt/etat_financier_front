@@ -5,11 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7484dae-c347-4d31-8456-bea625e470fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/rubrique.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend_2/demo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/BilanResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/Rubrique.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/RubriqueController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/RubriqueCpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/RubriqueCplRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/RubriqueRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/RubriqueService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/utils/ResponseBody.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/atoms/tree/tree.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/atoms/tree/tree.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/rubrique.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rubrique.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/part-2/rubrique-add-interface/rubrique-add-interface.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/part-2/rubrique-add-interface/rubrique-add-interface.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../script.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,29 +42,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/ITU/S5/Mobile/crypto",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.Angular CLI Server.executor": "Run",
-    "ts.external.directory.path": "D:\\ITU\\S5\\Gestion\\etat_financier_front\\etat_financier_front\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/ITU/S5/Mobile/crypto&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Angular CLI Server.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\ITU\\S5\\Gestion\\etat_financier_front\\etat_financier_front\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "oracle",
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;oracle&quot;,
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="npm.Angular CLI Server">
     <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
       <method v="2" />
@@ -97,7 +105,7 @@
       <workItem from="1736267190516" duration="2679000" />
       <workItem from="1736358000002" duration="1900000" />
       <workItem from="1736401758768" duration="9785000" />
-      <workItem from="1736478898742" duration="14259000" />
+      <workItem from="1736478898742" duration="20696000" />
     </task>
     <servers />
   </component>

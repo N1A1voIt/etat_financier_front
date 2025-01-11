@@ -1,11 +1,11 @@
 // rubrique.model.ts
 export interface Rubrique {
-    id_rubrique: number;
+    idRubrique?: number;
     rubrique: string;
     montant?: number;
-    n_compte?: string;
-    id_type: number;
-    id_rubrique_1?: number;
+    nCompte?: string;
+    idType: number;
+    idRubriqueMere?: number;
     children?: Rubrique[];
     showAddForm?: boolean;
     expanded?: boolean;
