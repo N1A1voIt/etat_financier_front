@@ -5,18 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7484dae-c347-4d31-8456-bea625e470fa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/rubrique.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend_2/demo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/atoms/collapsible/collapsible.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/atoms/collapsible/collapsible.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/form-compte-resultat/form-compte-resultat.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/form-compte-resultat/form-compte-resultat.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/form-compte-resultat/form-compte-resultat.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/form-compte-resultat/form-compte-resultat.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/home/home.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -92,7 +97,7 @@
       <workItem from="1736267190516" duration="2679000" />
       <workItem from="1736358000002" duration="1900000" />
       <workItem from="1736401758768" duration="9785000" />
-      <workItem from="1736478898742" duration="8886000" />
+      <workItem from="1736478898742" duration="14259000" />
     </task>
     <servers />
   </component>
