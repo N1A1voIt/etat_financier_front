@@ -11,8 +11,8 @@ public class InterpretationController {
     @Autowired
     private InterpretationService service;
 
-    @GetMapping("/interpretations")
+    @GetMapping("/api/interpretations")
     public List<Interpretation> getAllInterpretations() {
-        return service.getAllInterpretations();
+        return Interpretation.toString(service.getAllInterpretations());
     }
 }

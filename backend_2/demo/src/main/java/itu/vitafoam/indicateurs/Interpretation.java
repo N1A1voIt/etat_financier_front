@@ -35,4 +35,18 @@ public class Interpretation {
             }
         }
     }
+    public static String toString(List<Interpretation> interpretations) {
+        return "{" +
+                "\"margeNette\":" + Interpretation.getIndicateur(interpretations,"marge_nette") +
+                ", \"resultatExpoloitation\":" + Interpretation.getIndicateur(interpretations,"resultat_exploitation") +
+                ",\"couvertureInterets\":" + Interpretation.getIndicateur(interpretations,"couverture_interets") +
+                ", \"retourSurActifs\":" + Interpretation.getIndicateur(interpretations,"ROA") +
+                ", \"liquiditeGenerale\":" +  Interpretation.getIndicateur(interpretations,"liquidite_generale")  +
+                ", \"liquiditeReduite\":" +  Interpretation.getIndicateur(interpretations,"ratio_liquidite_reduite")  +
+                ", \"endettementGlobal\":" +  Interpretation.getIndicateur(interpretations,"ratio_endettement")  +
+                ", \"levierFinancier\":" +  Interpretation.getIndicateur(interpretations,"levier_financier")  +
+                ", \"returnOnEquity\":" +  Interpretation.getIndicateur(interpretations,"ROE")  +
+                ", \"ROEavecEffetLevier\":" +  Interpretation.getIndicateur(interpretations,"ROE_avec_levier")  +
+                '}';
+    }
 }
