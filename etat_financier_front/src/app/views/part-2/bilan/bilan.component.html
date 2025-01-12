@@ -17,7 +17,7 @@
                         <ng-container matColumnDef="amount">
                             <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Montant ($) </mat-header-cell>
                             <mat-cell *matCellDef="let element" [style.margin-left.px]="element.level * 20" [ngClass]="{ 'important-rubrique': element.isImportant }">
-                                {{ element.amount === 0 ? '' : (element.amount | number: '1.2-2') }}
+                                {{ element.amount === 0 ? 0 : (element.amount | number: '1.2-2') }}
                             </mat-cell>
                         </ng-container>
 
@@ -43,7 +43,7 @@
                         <ng-container matColumnDef="amount">
                             <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Montant ($) </mat-header-cell>
                             <mat-cell *matCellDef="let element" [style.margin-left.px]="element.level * 20" [ngClass]="{ 'important-rubrique': element.isImportant }">
-                                {{ element.amount === 0 ? '' : (element.amount | number: '1.2-2') }}
+                                {{ element.amount === 0 ? 0 : (element.amount | number: '1.2-2') }}
                             </mat-cell>
                         </ng-container>
 
