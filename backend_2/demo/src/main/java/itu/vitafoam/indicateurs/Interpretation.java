@@ -1,7 +1,11 @@
 package itu.vitafoam.indicateurs;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "interpretations")
@@ -11,7 +15,7 @@ public class Interpretation {
     @Column(name = "view_name")
     private String viewName;
 
-    private double resultat;
+    private BigDecimal resultat;
 
     public String getViewName() {
         return viewName;
@@ -21,19 +25,20 @@ public class Interpretation {
         this.viewName = viewName;
     }
 
-    public double getResultat() {
+    public BigDecimal getResultat() {
         return resultat;
     }
 
-    public void setResultat(double resultat) {
+    public void setResultat(BigDecimal resultat) {
         this.resultat = resultat;
     }
-    public static double getIndicateur(List<Interpretation> interpretations,String indicateur){
+    public static BigDecimal getIndicateur(List<Interpretation> interpretations, String indicateur){
         for (Interpretation interpretation : interpretations) {
             if(interpretation.getViewName().equals(indicateur)){
                 return interpretation.getResultat();
             }
         }
+        return new BigDecimal(0);
     }
     public static String toString(List<Interpretation> interpretations) {
         return "{" +
