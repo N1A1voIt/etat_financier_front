@@ -1,4 +1,6 @@
-<ul class="ml-12 p-3 border border-black rounded-2xl">
+<div class="treeview">
+
+<ul class="ml-12 p-3 rounded-2xl">
     <li *ngFor="let rubrique of rubriques" class="pt-3 pb-6">
         <div class="flex gap-8 items-center">
             {{ rubrique.rubrique }} {{ rubrique.montant }}
@@ -22,3 +24,4 @@
         </div>
     </li>
 </ul>
+</div>
