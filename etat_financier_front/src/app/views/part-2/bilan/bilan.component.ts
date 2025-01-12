@@ -41,18 +41,38 @@ interface FlatRubrique {
 export class BilanComponent implements OnInit {
   displayedColumns: string[] = ['label', 'amount'];
   dataSource: MatTableDataSource<FlatRubrique>=new MatTableDataSource<FlatRubrique>();
+  dataSource2: MatTableDataSource<FlatRubrique>=new MatTableDataSource<FlatRubrique>();
   estEquilibre:boolean = false;
   rubriques: Rubrique[] = [];
+  rubriquesPassifs: Rubrique[] = [];
+  totalActifs: number = 0;
+  totalPassifs: number = 0;
   constructor(private rubriquesService:RubriquesService) {
   }
   ngOnInit() {
     this.rubriquesService.getBilans().subscribe({
       next:(response) => {
-        this.estEquilibre = response.estEquilibre;
+        this.estEquilibre = response.data.estEquilibre;
         if (this.estEquilibre) {
-          let rubriques1 = this.buildTree(response.data);
-          const flatData = this.flattenRubriques(rubriques1);
+          console.log(response);
+          let rubriques1 = this.buildTree(response.data.actifs);
+          let rubriques2 = this.buildTree(response.data.passifs);
+          const flatData = this.flattenRubriques(rubriques1,0,true);
+          flatData.push({
+            label: 'TOTAL ACTIFS',
+            amount: this.totalActifs,
+            level: 0,
+            isImportant: true,
+          })
+          const flatData2 = this.flattenRubriques(rubriques2,0,false);
+          flatData2.push({
+            label: 'TOTAL PASSIFS',
+            amount: this.totalPassifs,
+            level: 0,
+            isImportant: true,
+          })
           this.dataSource = new MatTableDataSource(flatData);
+          this.dataSource2 = new MatTableDataSource(flatData2);
         }
       },error:(error) => {
         alert(error);
@@ -87,20 +107,48 @@ export class BilanComponent implements OnInit {
 
     return rootRubriques;
   }
-  flattenRubriques(rubriques: Rubrique[], level: number = 0): FlatRubrique[] {
+  flattenRubriques(rubriques: Rubrique[], level: number = 0,estActif:boolean): FlatRubrique[] {
     let flatData: FlatRubrique[] = [];
-
     rubriques.forEach((rubrique) => {
-      flatData.push({
-        label: rubrique.rubrique,
-        amount: rubrique.montant || 0,
-        level: level,
-        isImportant: true,
-      });
+      let amount = rubrique.montant || 0;
 
       if (rubrique.children && rubrique.children.length > 0) {
-        flatData = flatData.concat(this.flattenRubriques(rubrique.children, level + 1));
+        const childrenData = this.flattenRubriques(rubrique.children, level + 1,estActif);
+        const childrenAmount = childrenData.reduce((sum, child) => sum + child.amount, 0);
+
+        flatData.push({
+          label: rubrique.rubrique,
+          amount: 0,
+          level: level,
+          isImportant: true,
+        });
+
+        flatData = flatData.concat(childrenData);
+
+        if (level === 1) {
+          flatData.push({
+            label: `TOTAL  ${rubrique.rubrique.toUpperCase()}`,
+            amount: childrenAmount,
+            level: 1,
+            isImportant: true,
+          });
+          if (estActif) {
+            console.log(childrenAmount);
+            this.totalActifs += childrenAmount;
+          }
+          else {
+            this.totalPassifs += childrenAmount;
+          }
+        }
+      } else {
+        flatData.push({
+          label: rubrique.rubrique,
+          amount: amount,
+          level: level,
+          isImportant: true,
+        });
       }
+
     });
 
     return flatData;
