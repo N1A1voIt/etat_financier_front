@@ -1,22 +1,22 @@
-<div  class="w-full h-[99%] p-12">
+<div *ngIf="estEquilibre" class="w-full h-[99%] p-12">
     <div class="w-full h-full flex flex-col justify-center items-center ">
-        <div class="rounded-xl overflow-y-scroll w-[90%] h-[100vh] flex flex-col gap-20 items-center">
-            <div>
-                <h1 class="text-3xl">Résultats des actifs</h1>
-            </div>
-            <div class="rounded-xl w-[90%] h-[90%] flex flex-col items-center">
+        <div class="rounded-xl overflow-y-scroll w-full h-[100vh] grid grid-cols-2 gap-12">
+            <div class="rounded-xl w-full h-[100vh] flex flex-col gap-10 items-center col-span-1">
+                <div>
+                    <h1 class="text-3xl">Résultats des actifs</h1>
+                </div>
                     <mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
 
                         <ng-container matColumnDef="label">
                             <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Rubrique </mat-header-cell>
                             <mat-cell *matCellDef="let element" [ngClass]="{ 'important-rubrique': element.isImportant }">
-                                <span [style.margin-left.px]="element.level * 40">{{ element.label }}</span>
+                                <span [style.margin-left.px]="element.level * 20" class="mono-sans-thin">{{ element.label }}</span>
                             </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="amount">
                             <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Montant ($) </mat-header-cell>
-                            <mat-cell *matCellDef="let element" [style.margin-left.px]="element.level * 40" [ngClass]="{ 'important-rubrique': element.isImportant }">
+                            <mat-cell *matCellDef="let element" [style.margin-left.px]="element.level * 20" [ngClass]="{ 'important-rubrique': element.isImportant }">
                                 {{ element.amount === 0 ? '' : (element.amount | number: '1.2-2') }}
                             </mat-cell>
                         </ng-container>
@@ -26,22 +26,23 @@
 
                     </mat-table>
                 </div>
-            <div>
-                <h1 class="text-3xl">Résultats des passifs</h1>
-            </div>
-            <div class="rounded-xl w-[90%]  h-[90%] flex flex-col gap-20 items-center">
+
+            <div class="rounded-xl w-full  h-[90vh] flex flex-col gap-10 items-center col-span-1">
+                <div>
+                    <h1 class="text-3xl">Résultats des passifs</h1>
+                </div>
                     <mat-table  [dataSource]="dataSource2" class="mat-elevation-z8">
 
                         <ng-container matColumnDef="label">
                             <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Rubrique </mat-header-cell>
                             <mat-cell *matCellDef="let element" [ngClass]="{ 'important-rubrique': element.isImportant }">
-                                <span [style.margin-left.px]="element.level * 40">{{ element.label }}</span>
+                                <span [style.margin-left.px]="element.level * 20"  class="mono-sans-thin">{{ element.label }}</span>
                             </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="amount">
                             <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Montant ($) </mat-header-cell>
-                            <mat-cell *matCellDef="let element" [style.margin-left.px]="element.level * 40" [ngClass]="{ 'important-rubrique': element.isImportant }">
+                            <mat-cell *matCellDef="let element" [style.margin-left.px]="element.level * 20" [ngClass]="{ 'important-rubrique': element.isImportant }">
                                 {{ element.amount === 0 ? '' : (element.amount | number: '1.2-2') }}
                             </mat-cell>
                         </ng-container>
