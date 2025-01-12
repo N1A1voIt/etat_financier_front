@@ -43,7 +43,6 @@ public class Interpretation {
     public static String toString(List<Interpretation> interpretations) {
         return "{" +
                 "\"margeNette\":" + Interpretation.getIndicateur(interpretations,"marge_nette") +
-                ", \"resultatExpoloitation\":" + Interpretation.getIndicateur(interpretations,"resultat_exploitation") +
                 ",\"couvertureInterets\":" + Interpretation.getIndicateur(interpretations,"couverture_interets") +
                 ", \"retourSurActifs\":" + Interpretation.getIndicateur(interpretations,"ROA") +
                 ", \"liquiditeGenerale\":" +  Interpretation.getIndicateur(interpretations,"liquidite_generale")  +

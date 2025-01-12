@@ -457,11 +457,11 @@ FROM (
 
 CREATE VIEW ROE_avec_levier AS
 SELECT
-    ROA + ((ROA - taux_interet_dette) * levier_financier) AS ROE_avec_levier
+    ROA + ((ROA - coalesce(taux_interet_dette,0)) * levier_financier) AS ROE_avec_levier
 FROM (
          SELECT
              (rn.montant / ta.montant) AS ROA,
-             (ta.montant / cp.montant) AS levier_financier,
+             (ta.montant / (cp.montant+resultat_net.montant)) AS levier_financier,
              (cf.montant / td.montant) AS taux_interet_dette
          FROM resultat_net rn
                   JOIN (
@@ -475,7 +475,7 @@ FROM (
          ) td ON 1=1
                   JOIN (
              SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom = 'Charges financiers'
-         ) cf ON 1=1
+         ) cf ON 1=1 JOIN resultat_net ON 1=1
      ) subquery;
 
 CREATE VIEW interpretations AS
@@ -484,14 +484,6 @@ SELECT
     marge_nette AS resultat
 FROM
     marge_nette
-
-UNION ALL
-
-SELECT
-    'resultat_exploitation',
-    resultat_exploitation AS resultat
-FROM
-    resultat_exploitation
 
 UNION ALL
 
