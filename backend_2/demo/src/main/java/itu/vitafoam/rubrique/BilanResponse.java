@@ -3,15 +3,24 @@ package itu.vitafoam.rubrique;
 import java.util.List;
 
 public class BilanResponse {
-    List<RubriqueCpl> rubriques;
+    List<RubriqueCpl> actifs;
+    List<RubriqueCpl> passifs;
     boolean estEquilibre;
 
-    public List<RubriqueCpl> getRubriques() {
-        return rubriques;
+    public List<RubriqueCpl> getActifs() {
+        return actifs;
     }
 
-    public void setRubriques(List<RubriqueCpl> rubriques) {
-        this.rubriques = rubriques;
+    public void setActifs(List<RubriqueCpl> actifs) {
+        this.actifs = actifs;
+    }
+
+    public List<RubriqueCpl> getPassifs() {
+        return passifs;
+    }
+
+    public void setPassifs(List<RubriqueCpl> passifs) {
+        this.passifs = passifs;
     }
 
     public boolean isEstEquilibre() {
