@@ -372,3 +372,179 @@ FROM (
 
 CREATE VIEW vue_rubrique_type AS 
 SELECT rubriques.*,est_actif,nom FROM rubriques JOIN type on rubriques.id_type = type.id_type;
+-- INDICATEURS FINANCIERS
+CREATE VIEW marge_nette AS
+SELECT
+    (rn.montant / pe.montant) * 100 AS marge_nette
+FROM resultat_net rn
+         JOIN production_exercice pe ON 1=1;
+
+CREATE VIEW resultat_exploitation AS
+SELECT montant AS resultat_exploitation
+FROM resultat_operationnel;
+
+CREATE VIEW couverture_interets AS
+SELECT
+    (ro.montant / COALESCE(fd.cf, 0)) AS couverture_interets
+FROM resultat_operationnel ro
+         JOIN financial_data fd ON 1=1;
+
+CREATE VIEW ROA AS
+SELECT
+    (rn.montant / ta.montant) * 100 AS ROA
+FROM resultat_net rn
+         JOIN (SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom LIKE 'Actifs%') ta ON 1=1;
+
+CREATE VIEW liquidite_generale AS
+SELECT
+    (ac.montant / pc.montant) AS ratio_liquidite_generale
+FROM (
+         SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom = 'Actifs courants'
+     ) ac,
+     (
+         SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom = 'Passifs courants'
+     ) pc;
+
+CREATE VIEW ratio_endettement AS
+SELECT
+    (td.montant / ta.montant) * 100 AS ratio_endettement
+FROM (
+         SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom LIKE 'Passifs%'
+     ) td,
+     (
+         SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom LIKE 'Actifs%'
+     ) ta;
+
+CREATE VIEW levier_financier AS
+SELECT
+    (ta.montant / cp.montant) AS levier_financier
+FROM (
+         SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom LIKE 'Actifs%'
+     ) ta,
+     (
+         SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom = 'Capitaux propres'
+     ) cp;
+
+CREATE VIEW ROE AS
+SELECT
+    (rn.montant / cp.montant) * 100 AS ROE
+FROM resultat_net rn
+         JOIN (
+    SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom = 'Capitaux propres'
+) cp ON 1=1;
+
+CREATE VIEW ratio_liquidite_reduite AS
+SELECT
+    ((ac.montant - COALESCE(stocks.montant, 0)) / pc.montant) AS ratio_liquidite_reduite
+FROM (
+         SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom = 'Actifs courants'
+     ) ac,
+     (
+         SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom = 'Passifs courants'
+     ) pc,
+     (
+         SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom = 'Stocks'
+     ) stocks;
+
+CREATE VIEW ROE_avec_levier AS
+SELECT
+    ROA + ((ROA - taux_interet_dette) * levier_financier) AS ROE_avec_levier
+FROM (
+         SELECT
+             (rn.montant / ta.montant) AS ROA,
+             (ta.montant / cp.montant) AS levier_financier,
+             (cf.montant / td.montant) AS taux_interet_dette
+         FROM resultat_net rn
+                  JOIN (
+             SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom LIKE 'Actifs%'
+         ) ta ON 1=1
+                  JOIN (
+             SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom = 'Capitaux propres'
+         ) cp ON 1=1
+                  JOIN (
+             SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom LIKE 'Passifs%'
+         ) td ON 1=1
+                  JOIN (
+             SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom = 'Charges financiers'
+         ) cf ON 1=1
+     ) subquery;
+
+CREATE VIEW interpretations AS
+SELECT
+    'marge_nette' as view_name,
+    marge_nette AS resultat
+FROM
+    marge_nette
+
+UNION ALL
+
+SELECT
+    'resultat_exploitation',
+    resultat_exploitation AS resultat
+FROM
+    resultat_exploitation
+
+UNION ALL
+
+SELECT
+    'couverture_interets',
+    couverture_interets AS resultat
+FROM
+    couverture_interets
+
+UNION ALL
+
+SELECT
+    'ROA',
+    roa AS resultat
+FROM
+    ROA
+
+UNION ALL
+
+SELECT
+    'liquidite_generale',
+    ratio_liquidite_generale AS resultat
+FROM
+    liquidite_generale
+
+UNION ALL
+
+SELECT
+    'ratio_endettement',
+    ratio_endettement AS resultat
+FROM
+    ratio_endettement
+
+UNION ALL
+
+SELECT
+    'levier_financier',
+    levier_financier AS resultat
+FROM
+    levier_financier
+
+UNION ALL
+
+SELECT
+    'ROE',
+    ROE AS resultat
+FROM
+    ROE
+
+UNION ALL
+
+SELECT
+    'ratio_liquidite_reduite',
+    ratio_liquidite_reduite AS resultat
+FROM
+    ratio_liquidite_reduite
+
+UNION ALL
+
+SELECT
+    'ROE_avec_levier',
+    ROE_avec_levier AS resultat
+FROM
+    ROE_avec_levier;
+
