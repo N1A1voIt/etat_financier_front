@@ -1,4 +1,9 @@
 package itu.vitafoam.compte_resultat;
 
-public interface CompteResultatRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface CompteResultatRepository extends JpaRepository<CompteResultat,Long> {
+    public Optional<CompteResultat> findByRubrique(String rubrique);
 }
