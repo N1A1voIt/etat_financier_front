@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.Immutable;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "vue_rubrique_type")
@@ -27,6 +28,8 @@ public class RubriqueCpl {
     Long idRubriqueMere;
     @Column(name = "nom")
     String nom;
+    @Transient
+    private List<RubriqueCpl> children;
 
     public Long getIdRubrique() {
         return idRubrique;
@@ -90,5 +93,13 @@ public class RubriqueCpl {
 
     public void setIdRubriqueMere(Long idRubriqueMere) {
         this.idRubriqueMere = idRubriqueMere;
+    }
+
+    public List<RubriqueCpl> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<RubriqueCpl> children) {
+        this.children = children;
     }
 }

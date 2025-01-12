@@ -8,7 +8,7 @@ import {apiUrl} from "../../../environnements/env";
 export class EtatFinancierService {
   apiUrl:string = apiUrl();
   constructor(private http:HttpClient) { }
-  getRatios(json:any){
-    return this.http.post<any>(`${this.apiUrl}/api/indicateurs`, json);
+  getRatios(){
+    return this.http.get<any>(`${this.apiUrl}/api/interpretations`);
   }
 }

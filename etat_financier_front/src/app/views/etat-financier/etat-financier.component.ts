@@ -27,39 +27,25 @@ import {CommonModule} from "@angular/common";
   styleUrl: './etat-financier.component.css'
 })
 export class EtatFinancierComponent implements OnInit{
-    formGroup : FormGroup;
+
     data:any;
     entreprises:any;
     annees:any;
     isLoading:boolean = false;
     result:any = [];
-    constructor(public formBuilder: FormBuilder,private formService:FormDataFinanceService,private etatFinancierService:EtatFinancierService,private cdr:ChangeDetectorRef) {
-        this.formGroup = formBuilder.group({
-            idEntreprise:[""],
-            idAnnee:[""],
-        })
+    constructor(private etatFinancierService:EtatFinancierService,private cdr:ChangeDetectorRef) {
+
     }
-    onSubmit(){
+    ngOnInit(): void {
         this.isLoading = true;
-        this.etatFinancierService.getRatios(this.formGroup.value).subscribe({
+        this.etatFinancierService.getRatios().subscribe({
             next:(response)=>{
-                this.result = response.ratioIntSols;
+                this.result = response;
+                console.log(response);
                 this.isLoading = false;
                 this.cdr.detectChanges();
             },error:(error)=>{
                 console.log(error);
-                alert(error);
-            }
-        })
-    }
-    ngOnInit(): void {
-        this.data = this.formService.enterpriseYear().subscribe({
-            next:(response)=>{
-                this.data = response;
-                this.entreprises = this.data.entreprises;
-                this.annees = this.data.annees;
-                console.log(this.data.entreprises);
-            },error:(error)=>{
                 alert(error);
             }
         })
