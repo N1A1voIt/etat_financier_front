@@ -89,9 +89,7 @@ public class AiService {
             return "An unexpected error occurred.";
         }
     }
-    public String queryChatbot2(String query, String balanceSheet) {
-        System.out.println("Query: " + balanceSheet);
-
+    public String queryChatbot2(String query, String balanceSheet,String compteResultat) {
         RestTemplate restTemplate = new RestTemplate();
 
         Map<String, Object> requestBody = new HashMap<>();
@@ -101,11 +99,11 @@ public class AiService {
         List<Map<String, String>> parts = new ArrayList<>();
 
         Map<String, String> textPart = new HashMap<>();
-        textPart.put("text", "You are a financial analyst. Based on the following financial ratios and the balance sheets, provide a detailed interpretation of the company's financial health. "
+        textPart.put("text", "You are a financial analyst. Based on the following financial ratios, the balance sheets and the income statement, provide a detailed interpretation of the company's financial health. "
                 + "Explain what each ratio means, whether it is good or bad, and provide actionable recommendations for improvement ,overall tell me what to do with the elements of my balance sheets inside the recommendations. "
                 + "I want you to return an array of JSON with the following fields for each member: "
                 + "String label; BigDecimal ratio; String interpretation; String solution. "
-                + "Only return the JSON. Make the results in French. Ratios:\n" + query + " Balance sheets:\n" + balanceSheet);
+                + "Only return the JSON. Make the results in French. Ratios:\n" + query + " Balance sheets:\n" + balanceSheet+" Income statement:\n"+compteResultat);
 
         parts.add(textPart);
         content.put("parts", parts);
@@ -123,7 +121,6 @@ public class AiService {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(response.getBody());
 
-            // Extract the generated content
             String generatedContent = rootNode
                     .path("candidates")
                     .get(0)

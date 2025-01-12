@@ -2,6 +2,8 @@ package itu.vitafoam.healthInterpretations;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import itu.vitafoam.aiCall.AiService;
+import itu.vitafoam.compte_resultat.VueCompteResultatTranspose;
+import itu.vitafoam.compte_resultat.VueCompteResultatTransposeRepository;
 import itu.vitafoam.rubrique.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,8 @@ public class InterpretationService {
     RubriqueService rubriqueService;
     @Autowired
     RubriqueCplRepository rubriqueRepository;
-
+    @Autowired
+    VueCompteResultatTransposeRepository vueCompteResultatTransposeRepository;
     public String interprete() throws Exception{
         List<RubriqueCpl> bilan = buildTree(rubriqueRepository.findAll());
         ObjectMapper objectMapper = new ObjectMapper();
@@ -34,7 +37,9 @@ public class InterpretationService {
                 "  \"ratioEndettementGlobal\": 60.0,\n" +
                 "  \"couvertureInterets\": 5.7\n" +
                 "}";
-        return aiService.queryChatbot2(query,bilans).replace("```json","").replace("```","");
+        List<VueCompteResultatTranspose> vueCompteResultatTransposes = vueCompteResultatTransposeRepository.findAll();
+        String incomeStatement = objectMapper.writeValueAsString(vueCompteResultatTransposes);
+        return aiService.queryChatbot2(query,bilans,incomeStatement).replace("```json","").replace("```","");
     }
 
     public static List<RubriqueCpl> buildTree(List<RubriqueCpl> rubriques) {

@@ -28,7 +28,7 @@ export class TreeComponent implements OnChanges {
   constructor(private fb: FormBuilder,private rubriqueService:RubriquesService) {
     this.addForm = this.fb.group({
       rubrique: ['', Validators.required],
-      montant: [null, [Validators.required, Validators.min(0)]]
+      montant: [null, []]
     });
   }
 

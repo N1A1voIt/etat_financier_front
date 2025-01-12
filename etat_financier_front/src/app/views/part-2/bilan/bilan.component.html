@@ -1,4 +1,4 @@
-<div *ngIf="estEquilibre" class="w-full h-[99%] p-12">
+<div  class="w-full h-[99%] p-12">
     <div class="w-full h-full flex flex-col justify-center items-center ">
         <div class="rounded-xl overflow-y-scroll w-[90%] h-[100vh] flex flex-col gap-20 items-center">
             <div>
@@ -53,8 +53,10 @@
                 </div>
 
         </div>
+        <app-menu-li label="Interprétations financières" link="indicateur-financier"></app-menu-li>
+
     </div>
 </div>
 <div *ngIf="!estEquilibre">
-    <h1>Votre bilan n'est pas équilibré</h1>
+    <h1>Votre bilan n'est pas équilibré Total actifs : {{totalActifs | number: '1.2-2'}},Total passifs {{totalPassifs | number: '1.2-2'}}</h1>
 </div>

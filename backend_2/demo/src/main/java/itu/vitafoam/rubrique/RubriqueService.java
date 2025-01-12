@@ -28,8 +28,8 @@ public class RubriqueService {
             bilanResponse.setPassifs(passifs);
             bilanResponse.setEstEquilibre(true);
         }else{
-            bilanResponse.setActifs(null);
-            bilanResponse.setPassifs(null);
+            bilanResponse.setActifs(actifs);
+            bilanResponse.setPassifs(passifs);
             bilanResponse.setEstEquilibre(false);
         }
         return bilanResponse;
@@ -59,7 +59,7 @@ public class RubriqueService {
             if (actifs.get(i).getMontant() == null) continue;
             sumActifs += actifs.get(i).getMontant().doubleValue();
         }
-        for (int i = 0; i < actifs.size(); i++) {
+        for (int i = 0; i < passifs.size(); i++) {
             if (passifs.get(i).getMontant() == null) continue;
             sumPassifs += passifs.get(i).getMontant().doubleValue();
         }
