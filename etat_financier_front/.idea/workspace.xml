@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7484dae-c347-4d31-8456-bea625e470fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/CompteResultatController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/CompteResultatDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/CompteResultatService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/CompteResultatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/CompteResultatRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/FinancialData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/FinancialDataController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/FinancialDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/CompteResultat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/CompteResultatController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/CompteResultatDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/CompteResultatRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/CompteResultatService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/part-2/form-compte-resultat/form-compte-resultat.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/part-2/form-compte-resultat/form-compte-resultat.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/part-2/form-compte-resultat/form-compte-resultat.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/part-2/form-compte-resultat/form-compte-resultat.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +104,7 @@
       <workItem from="1736358000002" duration="1900000" />
       <workItem from="1736401758768" duration="9785000" />
       <workItem from="1736478898742" duration="20696000" />
-      <workItem from="1736656863926" duration="2350000" />
+      <workItem from="1736656863926" duration="4087000" />
     </task>
     <servers />
   </component>
