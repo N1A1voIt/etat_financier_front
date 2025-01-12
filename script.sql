@@ -25,6 +25,7 @@ CREATE TABLE rubriques(
    montant NUMERIC(18,2)  ,
    n_compte VARCHAR(50) ,
    id_type INTEGER,
+   est_stock BOOLEAN NOT NULL DEFAULT FALSE;
    id_rubrique_mere INTEGER,
    PRIMARY KEY(id_rubrique),
    FOREIGN KEY(id_type) REFERENCES type(id_type),
@@ -451,7 +452,7 @@ FROM (
          SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom = 'Passifs courants'
      ) pc,
      (
-         SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE nom = 'Stocks'
+         SELECT SUM(montant) AS montant FROM vue_rubrique_type WHERE est_stock = true
      ) stocks;
 
 CREATE VIEW ROE_avec_levier AS

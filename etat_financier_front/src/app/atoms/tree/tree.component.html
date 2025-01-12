@@ -11,6 +11,11 @@
             <form [formGroup]="addForm" (ngSubmit)="addRubrique(rubrique)" class="ml-12 flex flex-col gap-3">
                 <app-input-d-square formControlName="rubrique" label="Nom de la rubrique" type="text"></app-input-d-square>
                 <app-input-d-square formControlName="montant" label="Montant" type="number"></app-input-d-square>
+                <input
+                        formControlName="estStock"
+                        label="Est stock"
+                        type="checkbox"
+                        [value]="true"> Est stock
                 <div class="flex gap-2">
                     <button class="bg-blue-400 text-white rounded-xl w-[200px] p-2 px-3" type="submit" >Ajouter</button>
                     <button class="bg-blue-400 text-white rounded-xl w-[200px] p-2 px-3" type="button" (click)="closeAddForm(rubrique)">Fermer</button>

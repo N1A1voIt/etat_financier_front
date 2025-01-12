@@ -22,6 +22,8 @@ public class RubriqueCpl {
     String nCompte;
     @Column(name = "id_type")
     Long idType;
+    @Column(name = "est_stock")
+    Boolean estStock;
     @Column(name = "est_actif")
     Boolean estActif;
     @Column(name = "id_rubrique_mere")
@@ -30,6 +32,14 @@ public class RubriqueCpl {
     String nom;
     @Transient
     private List<RubriqueCpl> children;
+
+    public Boolean getEstStock() {
+        return estStock;
+    }
+
+    public void setEstStock(Boolean estStock) {
+        this.estStock = estStock;
+    }
 
     public Long getIdRubrique() {
         return idRubrique;

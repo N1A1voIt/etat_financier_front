@@ -5,6 +5,7 @@ export interface Rubrique {
     montant?: number;
     nCompte?: string;
     idType: number;
+    estStock:boolean;
     idRubriqueMere?: number;
     children?: Rubrique[];
     showAddForm?: boolean;

@@ -17,10 +17,20 @@ public class Rubrique {
     BigDecimal montant;
     @Column(name = "n_compte")
     String nCompte;
+    @Column(name = "est_stock")
+    Boolean estStock;
     @Column(name = "id_rubrique_mere")
     Long idRubriqueMere;
     @Column(name = "id_type")
     Long idType;
+
+    public Boolean getEstStock() {
+        return estStock;
+    }
+
+    public void setEstStock(Boolean estStock) {
+        this.estStock = estStock;
+    }
 
     public Long getIdRubrique() {
         return idRubrique;
