@@ -74,8 +74,10 @@ SELECT (
            COALESCE(ao, 0)
                -
            COALESCE(co, 0)
-               +
+               -
            COALESCE(dp, 0)
+                +
+           COALESCE(rp,0)
            ) AS montant
 FROM financial_data;
 
@@ -94,7 +96,7 @@ SELECT (
                +
            COALESCE(ao, 0)
                +
-           COALESCE(dp, 0)
+           COALESCE(rp, 0)
                +
            COALESCE(pf, 0)
            ) AS montant
@@ -104,13 +106,19 @@ CREATE OR REPLACE VIEW total_charge_ordinaire AS
 SELECT (
            (SELECT montant FROM consommation_exercice)
                +
-           (SELECT montant FROM excedent_brut_exploitation)
+           COALESCE(cp,0)
+               +
+           COALESCE(it,0)
                +
            COALESCE(co, 0)
                +
-           COALESCE(cf, 0)
+           COALESCE(dp, 0)
                +
-           COALESCE(ie, 0)
+           COALESCE(cf, 0)
+           +
+           COALESCE(ie,0)
+            +
+           COALESCE(id,0)
            ) AS montant
 FROM financial_data;
 

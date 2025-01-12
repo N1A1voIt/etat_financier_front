@@ -10,6 +10,7 @@ import {
 import {Rubrique} from "../../../rubrique.model";
 import {DecimalPipe, NgClass, NgIf} from "@angular/common";
 import {RubriquesService} from "../services/rubriques.service";
+import {MenuLiComponent} from "../../../../reusable/menu-li/menu-li.component";
 interface FlatRubrique {
   label: string;
   amount: number;
@@ -33,7 +34,8 @@ interface FlatRubrique {
     MatHeaderRowDef,
     MatRowDef,
     MatColumnDef,
-    NgIf
+    NgIf,
+    MenuLiComponent
   ],
   templateUrl: './bilan.component.html',
   styleUrl: './bilan.component.css'
@@ -53,7 +55,6 @@ export class BilanComponent implements OnInit {
     this.rubriquesService.getBilans().subscribe({
       next:(response) => {
         this.estEquilibre = response.data.estEquilibre;
-        if (this.estEquilibre) {
           console.log(response);
           let rubriques1 = this.buildTree(response.data.actifs);
           let rubriques2 = this.buildTree(response.data.passifs);
@@ -73,7 +74,6 @@ export class BilanComponent implements OnInit {
           })
           this.dataSource = new MatTableDataSource(flatData);
           this.dataSource2 = new MatTableDataSource(flatData2);
-        }
       },error:(error) => {
         alert(error);
       }
