@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7484dae-c347-4d31-8456-bea625e470fa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/aiCall/AiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/aiCall/AiService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/healthInterpretations/InterpretationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/healthInterpretations/InterpretationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/RubriqueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/RubriqueService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/atoms/tree/tree.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/atoms/tree/tree.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/views/part-2/bilan/bilan.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/part-2/bilan/bilan.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/part-2/bilan/bilan.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/part-2/bilan/bilan.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../script.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
