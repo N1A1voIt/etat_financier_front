@@ -62,10 +62,10 @@ export class FormCompteResultatComponent implements OnInit {
 
   ngOnInit(): void {
     this.cdr.getFinancialDataByYear().subscribe(
-        (data) => {
+        (data: any) => {
           this.patchFormValues(data);
         },
-        (error) => {
+        (error: any) => {
           console.error('Error fetching financial data:', error);
         }
     );
@@ -137,9 +137,9 @@ export class FormCompteResultatComponent implements OnInit {
     ) {
       console.log("Formulaire soumis avec succès :", this.getAllFormData());
       this.cdr.save(this.getAllFormData()).subscribe({
-        next:(response) => {
+        next:(response: any) => {
           console.log(response);
-        },error:(error) => {
+        },error:(error: any) => {
           alert(error);
         }
       })

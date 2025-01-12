@@ -8,6 +8,7 @@ import {EtatFinancierComponent} from "./views/etat-financier/etat-financier.comp
 import {FormDataFinanceComponent} from "./views/form-data-finance/form-data-finance.component";
 import {FormCompteResultatComponent} from "./views/part-2/form-compte-resultat/form-compte-resultat.component";
 import {RubriqueAddInterfaceComponent} from "./views/part-2/rubrique-add-interface/rubrique-add-interface.component";
+import {CompteResultatComponent} from "./views/part-2/compte-resultat/compte-resultat.component";
 
 export const routes: Routes = [
     {path:'signup',component:IndexComponent},
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path: 'form-financier',component:FormDataFinanceComponent},
     {path: 'form-compte-result',component:FormCompteResultatComponent},
     {path: 'rubrique-add',component:RubriqueAddInterfaceComponent},
+    {path: 'cdr',component:CompteResultatComponent},
     // {path: 'home',component:HomeComponent},
     // {path:'bon-commande-',component:BonCommandeClientComponent,canActivate:[pasSousFifreGuardGuard]}
 ];

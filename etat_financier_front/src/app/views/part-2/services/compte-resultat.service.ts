@@ -15,4 +15,7 @@ export class CompteResultatService {
   getFinancialDataByYear(): Observable<any> {
     return this.http.get(`${this.apiUrl}/api/financial-data/2024`);
   }
+  getCdr(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/api/financial-data/cdr`);
+  }
 }
