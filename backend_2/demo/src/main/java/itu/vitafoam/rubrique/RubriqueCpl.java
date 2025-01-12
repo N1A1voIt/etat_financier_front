@@ -21,7 +21,7 @@ public class RubriqueCpl {
     String nCompte;
     @Column(name = "id_type")
     Long idType;
-    @Column(name = "est_actid")
+    @Column(name = "est_actif")
     Boolean estActif;
     @Column(name = "id_rubrique_mere")
     Long idRubriqueMere;

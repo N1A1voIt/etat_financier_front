@@ -30,9 +30,11 @@ public class RubriqueService {
         double sumActifs = 0;
         double sumPassifs = 0;
         for (int i = 0; i < actifs.size(); i++) {
+            if (actifs.get(i).getMontant() == null) continue;
             sumActifs += actifs.get(i).getMontant().doubleValue();
         }
         for (int i = 0; i < actifs.size(); i++) {
+            if (passifs.get(i).getMontant() == null) continue;
             sumPassifs += passifs.get(i).getMontant().doubleValue();
         }
         return sumActifs == sumPassifs;

@@ -1,0 +1,24 @@
+<mat-table *ngIf="estEquilibre" [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="label">
+        <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Rubrique </mat-header-cell>
+        <mat-cell *matCellDef="let element" [ngClass]="{ 'important-rubrique': element.isImportant }">
+            <span [style.margin-left.px]="element.level * 40">{{ element.label }}</span>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Montant ($) </mat-header-cell>
+        <mat-cell *matCellDef="let element" [ngClass]="{ 'important-rubrique': element.isImportant }">
+            {{ element.amount | number: '1.2-2' }}
+        </mat-cell>
+    </ng-container>
+
+    <!-- Header and Row Definitions -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
+<div *ngIf="!estEquilibre">
+    <h1>Votre bilan n'est pas équilibré</h1>
+</div>

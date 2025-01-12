@@ -14,6 +14,9 @@ export class RubriquesService {
   getRubriques():Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/api/rubriques`);
   }
+  getBilans():Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/api/rubriques/bilan`);
+  }
   save(rubrique:Rubrique): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/api/rubriques`, rubrique);
   }
