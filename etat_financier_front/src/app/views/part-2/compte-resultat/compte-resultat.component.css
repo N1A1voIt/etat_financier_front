@@ -1,0 +1,10 @@
+/* Style pour les rubriques importantes */
+.important-rubrique {
+    margin-left: 20px; /* Marge à gauche pour les rubriques importantes */
+    font-weight: bold; /* Texte en gras pour les rubriques importantes */
+}
+
+/* Style pour les lignes en rouge (optionnel) */
+.red-row {
+    background-color: #ffebee; /* Couleur de fond rouge clair */
+}

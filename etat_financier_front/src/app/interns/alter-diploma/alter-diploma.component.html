@@ -1,0 +1,45 @@
+<form [formGroup]="form3" (ngSubmit)="onSubmit()" class="w-full">
+  <div
+    formArrayName="diploma"
+    class="w-full flex justify-center items-center flex-col gap-3"
+  >
+    <div
+      *ngFor="let item of diploma.controls; let i = index"
+      class="w-full flex justify-center items-center flex-col gap-3 border p-3 rounded-3xl"
+      [formGroupName]="i"
+    >
+      <app-input-d-square
+        class="w-full"
+        label="Niveau"
+        [disabled]="disabled"
+        formControlName="niveau"
+      ></app-input-d-square>
+      <div class="grid grid-cols-2 gap-4 w-full">
+        <div formGroupName="domaine">
+          <app-select-rounded
+            formControlName="domaineId"
+            [options]="assets.domaines"
+            [valueKey]="'domaineId'"
+            [labelKey]="'nom'"
+            label="Domaine"
+            [disabled]="disabled"
+            placeholder="Choisissez le domaine"
+          ></app-select-rounded>
+        </div>
+        <app-input-d-square
+          label="Date obtention"
+          [disabled]="disabled"
+          formControlName="dateObtention"
+          type="date"
+        ></app-input-d-square>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-2 gap-4 w-full">
+    <app-submit-button label="Valider"></app-submit-button>
+    <app-submit-button
+      label="Ajouter un diplôme"
+      (click)="addDiploma()"
+    ></app-submit-button>
+  </div>
+</form>

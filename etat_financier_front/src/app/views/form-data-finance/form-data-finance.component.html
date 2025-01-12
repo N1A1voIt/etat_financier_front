@@ -1,0 +1,163 @@
+<div class="w-full h-full flex flex-col items-center shadow-xl border p-8 px-20 gap-10 overflow-y-scroll">
+    <div>
+        <h1 class="text-3xl">Formulaire d'insertion des données financières</h1>
+    </div>
+    <form [formGroup]="formGroup" class="w-full flex flex-col gap-4 justify-between items-center" (ngSubmit)="onSubmit()">
+
+        <div class="border w-full p-3 rounded-[10px]">
+            <h1>Informations de l'entreprise</h1>
+<!--            <app-input-d-square class="w-full" label="Nom de l" formControlName="motDePasse"></app-input-d-square>-->
+            <app-select-rounded
+                    formControlName="idEntreprise"
+                    [options]="entreprises"
+                    valueKey="idEntreprise"
+                    labelKey="nom"
+                    [disabled]="false"
+                    label="Entreprise"
+                    placeholder="Choisissez l'entreprise"
+            ></app-select-rounded>
+        </div>
+        <div class="border w-full p-3 rounded-[10px]">
+            <h1>Informations de l'année</h1>
+            <!--            <app-input-d-square class="w-full" label="Nom de l" formControlName="motDePasse"></app-input-d-square>-->
+            <app-select-rounded
+                    formControlName="idAnnee"
+                    [options]="annees"
+                    [valueKey]="'idAnnee'"
+                    [disabled]="false"
+
+                    [labelKey]="'annee'"
+                    label="Année"
+                    placeholder="Choisissez l'année"
+            ></app-select-rounded>
+        </div>
+        <div class="w-full grid grid-cols-2 gap-3">
+            <div class="border w-full p-3 rounded-[10px]">
+                <h1>Détails des actifs immobilisés</h1>
+                <app-input-d-square
+                        label="Immobilisation corporelle"
+                        [disabled]="false"
+                        formControlName="immobilisationCorporelle"
+                        type="number"
+                ></app-input-d-square>
+                <app-input-d-square
+                        label="Immobilisation incorporelle"
+                        [disabled]="false"
+                        type="number"
+                        formControlName="immobilisationIncorporelle"
+                ></app-input-d-square>
+                <app-input-d-square
+                    label="Immobilisation financière"
+                    [disabled]="false"
+                    type="number"
+                    formControlName="immobilisationFinanciere"
+                ></app-input-d-square>
+                <app-input-d-square
+                        label="Autres immobilisations"
+                        [disabled]="false"
+                        type="number"
+                        formControlName="autresImmobilisations"
+                ></app-input-d-square>
+            </div>
+            <div class="border w-full p-3 rounded-[10px]">
+                <h1>Détails des actifs courant</h1>
+                <app-input-d-square
+                        label="Stocks"
+                        [disabled]="false"
+                        formControlName="stocks"
+                        type="number"
+                ></app-input-d-square>
+                <app-input-d-square
+                        label="Créances clients"
+                        [disabled]="false"
+                        formControlName="creancesClients"
+                        type="number"
+                ></app-input-d-square>
+                <app-input-d-square
+                        label="Disponibilités"
+                        [disabled]="false"
+                        type="number"
+                        formControlName="disponibilite"
+                ></app-input-d-square>
+                <app-input-d-square
+                        label="Autres actifs courants"
+                        [disabled]="false"
+                        type="number"
+                        formControlName="autresActifsCourant"
+                ></app-input-d-square>
+            </div>
+            <div class="border w-full p-3 rounded-[10px]">
+                <h1>Détails des capitaux propres</h1>
+                <app-input-d-square
+                        label="Capital social"
+                        [disabled]="false"
+                        formControlName="capitalSocial"
+                        type="number"
+                ></app-input-d-square>
+                <app-input-d-square
+                        label="Réserves"
+                        [disabled]="false"
+                        type="number"
+                        formControlName="reserves"
+                ></app-input-d-square>
+                <app-input-d-square
+                        label="Résultats de l'exercice"
+                        [disabled]="false"
+                        type="number"
+                        formControlName="exoResult"
+                ></app-input-d-square>
+                <app-input-d-square
+                        label="Autres capitaux propres"
+                        [disabled]="false"
+                        type="number"
+                        formControlName="autresCapitauxPropres"
+                ></app-input-d-square>
+            </div>
+            <div class="border w-full p-3 rounded-[10px]">
+                <h1>Détails des passifs courant</h1>
+                <app-input-d-square
+                        label="Dettes fournisseurs"
+                        [disabled]="false"
+                        formControlName="dettesFournisseurs"
+                        type="number"
+                ></app-input-d-square>
+                <app-input-d-square
+                        label="Dettes fiscales"
+                        [disabled]="false"
+                        type="number"
+                        formControlName="dettesFiscales"
+                ></app-input-d-square>
+                <app-input-d-square
+                        label="Autres passifs courants"
+                        [disabled]="false"
+                        type="number"
+                        formControlName="aPassifsCourants"
+                ></app-input-d-square>
+
+            </div>
+            <div class="border w-full p-3 rounded-[10px]">
+                <h1>Détails des passifs non courant</h1>
+                <app-input-d-square
+                        label="Emprunts"
+                        [disabled]="false"
+                        formControlName="emprunts"
+                        type="number"
+                ></app-input-d-square>
+                <app-input-d-square
+                        label="Provisions"
+                        [disabled]="false"
+                        type="number"
+                        formControlName="provisions"
+                ></app-input-d-square>
+                <app-input-d-square
+                        label="Autres passifs non courants"
+                        [disabled]="false"
+                        type="number"
+                        formControlName="aPassifsNonCourants"
+                ></app-input-d-square>
+
+            </div>
+        </div>
+        <app-submit-button label="Valider"></app-submit-button>
+    </form>
+</div>

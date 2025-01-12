@@ -1,0 +1,38 @@
+<div class="grid grid-cols-2 gap-4 w-[100%] h-[90vh] mono-sans-thin p-2">
+  <div class="flex justify-around gap-8 items-center h-[95vh] flex-col rounded-3xl shadow-xl border p-3">
+    <div>
+      <span class="text-3xl">Votre profil</span>
+    </div>
+
+    <div class="w-full">
+      <!-- Conditionally display the child component when data is available -->
+      <app-alter-profil *ngIf="data" [profil]="data.profil" [disabled]="disabled"></app-alter-profil>
+      <!-- Show loading message if data is not loaded yet -->
+      <div *ngIf="!data" class="text-center text-gray-500">Chargement...</div>
+    </div>
+    <div></div>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 h-[95vh]">
+    <div class="max-h-[47.5vh] h-[47.5vh] w-full overflow-y-scroll flex justify-around items-center flex-col gap-8 rounded-3xl shadow-xl border p-3">
+      <div>
+        <span class="text-3xl">Votre expérience</span>
+      </div>
+      <div class="w-full">
+        <app-alter-xp *ngIf="data" [disabled]="disabled" [exp]="data.experiences"></app-alter-xp>
+        <div *ngIf="!data" class="text-center text-gray-500">Chargement...</div>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="max-h-[47.5vh] h-[47.5vh] w-full overflow-y-scroll flex justify-around items-center flex-col gap-8 rounded-3xl shadow-xl border p-3">
+      <div>
+        <span class="text-3xl">Vos diplômes</span>
+      </div>
+      <div class="w-full">
+        <app-alter-diploma *ngIf="data" [disabled]="disabled" [dips]="data.diplomes"></app-alter-diploma>
+        <div *ngIf="!data" class="text-center text-gray-500">Chargement...</div>
+      </div>
+    </div>
+  </div>
+</div>

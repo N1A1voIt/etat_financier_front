@@ -1,0 +1,15 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="w-full flex justify-center items-center flex-col gap-3">
+  <app-input-control
+    class="w-full"
+    label="E-mail"
+    placeholder=""
+    formControlName="email"
+  ></app-input-control>
+  <app-input-control class="w-full" label="Password" formControlName="motDePasse"></app-input-control>
+  <app-submit-button class="w-full" label="Valider"></app-submit-button>
+  <div>
+    <p>
+      Don't have an account?<strong class="underline"><a>Sign Up</a></strong>
+    </p>
+  </div>
+</form>

@@ -1,0 +1,9 @@
+<div>
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">{{heading}}</label>
+    <div class="flex justify-between gap-2 w-full ">
+        <input type="range" min="0" max="100" value="{{percentage}}" class="w-[calc(100%-100px)]" [(ngModel)]="percentage">
+        <div class="w-[100px] flex justify-center items-center gap-1">
+            <input type="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none" value="{{percentage}}" name="percentage" [(ngModel)]="percentage"> %
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+
+<div *ngIf="showForm"  class="overflow-x-hidden overflow-y-scroll fixed inset-0 z-50 bg-gray-500 bg-opacity-75 backdrop-blur-md w-full outline-none focus:outline-none justify-center items-center flex roboto-thin transition-all duration-700 ease-in-out" [ngClass]="{'initial-pos ':!showForm , 'clicked-pos':showForm }">
+    <div class="relative min-w-[30vw] h-auto my-6 mx-auto max-w-6xl flex flex-col items-center justify-center">
+        <div class="border-0 rounded-lg relative flex flex-col gap-3 w-full h-fit justify-center items-center outline-none focus:outline-none">
+            <div class="flex items-start justify-between w-full bg-white  rounded-full">
+                <div class="w-full  p-5">
+                    <h3 class="text-md font-semibold uppercase text-[#0018ec69]">
+                        Liste des {{nom}}
+                    </h3>
+                </div>
+                <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" >
+                  <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    ×
+                  </span>
+                </button>
+            </div>
+            <div class="w-full rounded-3xl overflow-hidden border bg-white">
+                <ng-content></ng-content>
+            </div>
+            <div class="w-full  overflow-hidden  flex justify-center items-center ">
+                <!-- <button class="text-red-500 bg-white rounded-full font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 w-[50px] h-[50px] ease-linear transition-all duration-150 text-center" type="button" > -->
+                    <div class="bg-white p-5 text-center flex items-center justify-center rounded-full cursor-pointer" (click)="showForm= !showForm">
+                        <mat-icon class="text-red-500">close</mat-icon>
+                    </div>
+                <!-- </button> -->
+            </div>
+        </div>
+    </div>
+</div>
