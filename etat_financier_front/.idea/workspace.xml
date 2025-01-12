@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7484dae-c347-4d31-8456-bea625e470fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/BilanResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/Rubrique.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/RubriqueController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/RubriqueCpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/RubriqueCplRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/RubriqueRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/rubrique/RubriqueService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/utils/ResponseBody.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend_2/demo/src/main/java/itu/vitafoam/compte_resultat/CompteResultat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/atoms/tree/tree.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/atoms/tree/tree.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/rubrique.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rubrique.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/part-2/rubrique-add-interface/rubrique-add-interface.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/part-2/rubrique-add-interface/rubrique-add-interface.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../script.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +95,7 @@
       <workItem from="1736358000002" duration="1900000" />
       <workItem from="1736401758768" duration="9785000" />
       <workItem from="1736478898742" duration="20696000" />
+      <workItem from="1736656863926" duration="1142000" />
     </task>
     <servers />
   </component>

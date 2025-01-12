@@ -21,7 +21,7 @@ CREATE TABLE section_resultat(
 
 CREATE TABLE rubriques(
    id_rubrique SERIAL,
-   rubrique VARCHAR(250)  NOT NULL,
+   rubrique VARCHAR(2)  NOT NULL UNIQUE,
    montant NUMERIC(18,2)  ,
    n_compte VARCHAR(50) ,
    id_type INTEGER,
