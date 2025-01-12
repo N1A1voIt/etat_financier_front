@@ -1,8 +1,0 @@
-:host{
-    width: 100vw!important;
-    height: 100vh!important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-}
