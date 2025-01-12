@@ -52,75 +52,86 @@ CREATE TABLE financial_data (
     ec NUMERIC(18, 2)
 );
 
--- CREATE VIEW vue_compte_resultat AS
--- SELECT 
---     sr.numero_section,
---     sr.libelle AS section,
---     calculate_section_result(sr.numero_section) AS montant_total
--- FROM section_resultat sr;
+CREATE OR REPLACE VIEW production_exercice AS
+SELECT (ca + ps + pi) AS montant
+FROM financial_data;
 
--- CREATE OR REPLACE VIEW production_exercice as 
--- SELECT sum(montant) as montant FROM compte_resultat WHERE numero_section = 1;
+CREATE OR REPLACE VIEW consommation_exercice AS
+SELECT (ac + se) AS montant
+FROM financial_data;
 
--- CREATE OR REPLACE VIEW consommation_exercice as 
--- SELECT sum(montant) as montant FROM compte_resultat WHERE numero_section = 2;
+CREATE OR REPLACE VIEW valeur_ajoute_exploitation AS
+SELECT (SELECT montant FROM production_exercice) - (SELECT montant FROM consommation_exercice) AS montant;
 
--- CREATE OR REPLACE VIEW valeur_ajoute_exploitation as 
--- SELECT ((SELECT montant from production_exercice) - (SELECT montant from consommation_exercice)) as montant;
+CREATE OR REPLACE VIEW excedent_brut_exploitation AS
+SELECT (SELECT montant FROM valeur_ajoute_exploitation) - (cp + it) AS montant
+FROM financial_data;
 
--- CREATE OR REPLACE VIEW excedent_brut_exploitation as 
--- SELECT ((SELECT montant from valeur_ajoute_exploitation) - (SELECT sum(montant) as montant from consommation_exercice WHERE numero_section = 3)) as montant;
+CREATE OR REPLACE VIEW resultat_operationnel AS
+SELECT (
+    (SELECT montant FROM excedent_brut_exploitation) 
+    + 
+    ao 
+    - 
+    co 
+    +
+    dp
+) AS montant
+FROM financial_data;
 
--- CREATE OR REPLACE VIEW resultat_operationnel as 
--- SELECT (
---     (SELECT montant from excedent_brut_exploitation) 
---     + 
---     (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 4) 
---     - 
---     (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 5) 
---     +
---     (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 6)
--- ) as montant;
+CREATE OR REPLACE VIEW resultat_financier AS
+SELECT (pf - cf) AS montant
+FROM financial_data;
 
+CREATE OR REPLACE VIEW resultat_avant_impots AS
+SELECT (
+    (SELECT montant FROM resultat_operationnel) + (SELECT montant FROM resultat_financier)
+) AS montant;
 
--- CREATE OR REPLACE VIEW resultat_financier as SELECT (
--- (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 7) 
---     - 
--- (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 8)) as montant;
+CREATE OR REPLACE VIEW total_produit_ordinaire AS
+SELECT (
+    (SELECT montant FROM production_exercice) 
+    + 
+    ao 
+    + 
+    dp 
+    + 
+    pf
+) AS montant
+FROM financial_data;
 
--- CREATE OR REPLACE VIEW resultat_avant_impots as SELECT (
---     (SELECT montant from resultat_financier) + (SELECT montant from resultat_operationnel) 
--- ) as montant;
+CREATE OR REPLACE VIEW total_charge_ordinaire AS
+SELECT (
+    (SELECT montant FROM consommation_exercice) 
+    + 
+    (SELECT montant FROM excedent_brut_exploitation) 
+    + 
+    co 
+    + 
+    cf 
+    + 
+    ie
+) AS montant
+FROM financial_data;
 
--- CREATE OR REPLACE VIEW total_produit_ordinaire as SELECT(
---     (SELECT montant from production_exercice) + 
---     (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 4) + 
---     (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 6) + 
---     (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 7)  
--- ) as montant;
+CREATE OR REPLACE VIEW resultat_net_ordinaire AS
+SELECT (
+    (SELECT montant FROM resultat_avant_impots) 
+    - 
+    ie
+) AS montant;
 
--- CREATE OR REPLACE VIEW total_charge_ordinaire as SELECT (
---     (SELECT montant from consommation_exercice) +
---     (SELECT montant from excedent_brut_exploitation) + 
---     (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 5) +
---     (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 8) +
---     (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 9)  
--- ) as montant;
+CREATE OR REPLACE VIEW resultat_extraordinaire AS
+SELECT (ep - ec) AS montant
+FROM financial_data;
 
--- CREATE OR REPLACE VIEW resultat_net_ordinaire as SELECT (
---     (SELECT montant from resultat_avant_impots) -
---     (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 9)  
--- ) as montant;
+CREATE OR REPLACE VIEW resultat_net AS
+SELECT (
+    (SELECT montant FROM resultat_net_ordinaire) 
+    + 
+    (SELECT montant FROM resultat_extraordinaire)
+) AS montant;
 
--- CREATE OR REPLACE VIEW resultat_extraordinaire as SELECT (
---     (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 10)  -
---     (SELECT SUM(montant) as montant from consommation_exercice WHERE numero_section = 11)  
--- ) as montant;
-
--- CREATE OR REPLACE VIEW resultat_net as SELECT (
---     (SELECT montant from resultat_net_ordinaire) + 
---     (SELECT montant from resultat_extraordinaire) 
--- ) as montant;
 
 CREATE VIEW vue_rubrique_type AS 
 SELECT rubriques.*,est_actif,nom FROM rubriques JOIN type on rubriques.id_type = type.id_type;
