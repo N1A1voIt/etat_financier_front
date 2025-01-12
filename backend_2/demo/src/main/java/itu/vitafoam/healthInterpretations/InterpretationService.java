@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import itu.vitafoam.aiCall.AiService;
 import itu.vitafoam.compte_resultat.VueCompteResultatTranspose;
 import itu.vitafoam.compte_resultat.VueCompteResultatTransposeRepository;
+import itu.vitafoam.indicateurs.Interpretation;
+import itu.vitafoam.indicateurs.InterpretationIndicatorService;
 import itu.vitafoam.rubrique.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,20 +25,13 @@ public class InterpretationService {
     RubriqueCplRepository rubriqueRepository;
     @Autowired
     VueCompteResultatTransposeRepository vueCompteResultatTransposeRepository;
+    @Autowired
+    InterpretationIndicatorService interpretationIndicatorService;
     public String interprete() throws Exception{
         List<RubriqueCpl> bilan = buildTree(rubriqueRepository.findAll());
         ObjectMapper objectMapper = new ObjectMapper();
         String bilans = objectMapper.writeValueAsString(bilan);
-        String query = "{\n" +
-                "  \"idEntreprise\": 1,\n" +
-                "  \"idAnnee\": 2023,\n" +
-                "  \"margeNette\": 15.5,\n" +
-                "  \"retourSurActifs\": 10.2,\n" +
-                "  \"ratioLiquiditeGenerale\": 1.8,\n" +
-                "  \"ratioLiquiditeReduite\": 1.5,\n" +
-                "  \"ratioEndettementGlobal\": 60.0,\n" +
-                "  \"couvertureInterets\": 5.7\n" +
-                "}";
+        String query = Interpretation.toString(interpretationIndicatorService.getAllInterpretations());
         List<VueCompteResultatTranspose> vueCompteResultatTransposes = vueCompteResultatTransposeRepository.findAll();
         String incomeStatement = objectMapper.writeValueAsString(vueCompteResultatTransposes);
         return aiService.queryChatbot2(query,bilans,incomeStatement).replace("```json","").replace("```","");

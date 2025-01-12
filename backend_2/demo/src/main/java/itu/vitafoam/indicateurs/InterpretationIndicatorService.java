@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class InterpretationService {
+public class InterpretationIndicatorService {
 
     @Autowired
     private InterpretationRepository repository;

@@ -394,7 +394,7 @@ FROM resultat_operationnel;
 CREATE VIEW couverture_interets AS
 SELECT
     (ro.montant / COALESCE(fd.cf, 0)) AS couverture_interets
-FROM resultat_operationnel ro
+FROM excedent_brut_exploitation ro
          JOIN financial_data fd ON 1=1;
 
 CREATE VIEW ROA AS

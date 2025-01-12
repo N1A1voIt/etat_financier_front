@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class InterpretationController {
+public class Interpretation2Controller {
 
     @Autowired
-    private InterpretationService service;
+    private InterpretationIndicatorService service;
 
-    @GetMapping("/api/interpretations")
+    @GetMapping("/api/interpretations2")
     public List<Interpretation> getAllInterpretations() {
-        return Interpretation.toString(service.getAllInterpretations());
+        return service.getAllInterpretations();
     }
 }
