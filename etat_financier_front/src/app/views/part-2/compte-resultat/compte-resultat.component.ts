@@ -1,5 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable} from "@angular/material/table";
+import {
+  MatCell, MatCellDef,
+  MatColumnDef,
+  MatHeaderCell, MatHeaderCellDef,
+  MatHeaderRow,
+  MatHeaderRowDef,
+  MatRow, MatRowDef,
+  MatTable
+} from "@angular/material/table";
 import {DecimalPipe, NgClass} from "@angular/common";
 import {CompteResultatService} from "../services/compte-resultat.service";
 
@@ -13,7 +21,12 @@ import {CompteResultatService} from "../services/compte-resultat.service";
     NgClass,
     MatHeaderRow,
     MatRow,
-    DecimalPipe
+    DecimalPipe,
+    MatColumnDef,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatHeaderCellDef,
+    MatCellDef
   ],
   templateUrl: './compte-resultat.component.html',
   styleUrl: './compte-resultat.component.css'
