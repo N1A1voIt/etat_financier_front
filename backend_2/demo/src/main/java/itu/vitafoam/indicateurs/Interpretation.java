@@ -1,7 +1,10 @@
 package itu.vitafoam.indicateurs;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import java.util.List;
 
 @Entity
 @Table(name = "interpretations")
@@ -28,12 +31,13 @@ public class Interpretation {
     public void setResultat(double resultat) {
         this.resultat = resultat;
     }
-    public static double getIndicateur(List<Interpretation> interpretations,String indicateur){
+    public static double getIndicateur(List<Interpretation> interpretations, String indicateur){
         for (Interpretation interpretation : interpretations) {
             if(interpretation.getViewName().equals(indicateur)){
                 return interpretation.getResultat();
             }
         }
+        return 0;
     }
     public static String toString(List<Interpretation> interpretations) {
         return "{" +

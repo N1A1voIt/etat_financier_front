@@ -13,6 +13,6 @@ public class InterpretationController {
 
     @GetMapping("/api/interpretations")
     public List<Interpretation> getAllInterpretations() {
-        return Interpretation.toString(service.getAllInterpretations());
+        return service.getAllInterpretations();
     }
 }
