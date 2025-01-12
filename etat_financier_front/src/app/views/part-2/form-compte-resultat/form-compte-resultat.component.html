@@ -1,36 +1,39 @@
-
 <div class="w-full h-full flex flex-col items-center shadow-xl border p-8 px-20 gap-10 overflow-y-scroll">
     <div>
         <h1 class="text-3xl">Formulaire d'insertion des données financières</h1>
     </div>
+
     <div class="w-full flex justify-center flex-col items-center" *ngIf="currentStep === 1">
         <h3 class="text-3xl">1. Production de l'exercice</h3>
-        <form  class="w-[75%] flex flex-col gap-4 justify-between items-begin" [formGroup]="step1Form">
-            <app-input-d-square formControlName="chiffreAffaires" label="Chiffre d'affaires" type="number"></app-input-d-square>
-            <app-input-d-square formControlName="productionStockee" label="Production stockée" type="number"></app-input-d-square>
-            <app-input-d-square formControlName="productionImmobilisee" label="Production immobilisée" type="number"></app-input-d-square>
+        <form class="w-[75%] flex flex-col gap-4 justify-between items-begin" [formGroup]="step1Form">
+            <app-input-d-square formControlName="ca" label="Chiffre d'affaires" type="number"></app-input-d-square>
+            <app-input-d-square formControlName="ps" label="Production stockée" type="number"></app-input-d-square>
+            <app-input-d-square formControlName="pi" label="Production immobilisée" type="number"></app-input-d-square>
             <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="goToNextStep()" [disabled]="step1Form.invalid">Suivant</button>
         </form>
     </div>
 
     <div class="w-full flex justify-center flex-col items-center" *ngIf="currentStep === 2">
         <h3 class="text-3xl">2. Consommation de l'exercice</h3>
-        <form  class="w-[75%] flex flex-col gap-4 justify-between items-begin" [formGroup]="step2Form">
-            <app-input-d-square formControlName="achatsConsommes" label="Achats consommés" type="number"></app-input-d-square>
-            <app-input-d-square formControlName="servicesExterieurs" label="Services extérieurs" type="number"></app-input-d-square>
+        <form class="w-[75%] flex flex-col gap-4 justify-between items-begin" [formGroup]="step2Form">
+            <app-input-d-square formControlName="ac" label="Achats consommés" type="number"></app-input-d-square>
+            <app-input-d-square formControlName="se" label="Services extérieurs" type="number"></app-input-d-square>
             <div class="flex justify-between">
                 <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="goToPreviousStep()">Précédent</button>
                 <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="goToNextStep()" [disabled]="step2Form.invalid">Suivant</button>
             </div>
-
         </form>
     </div>
 
     <div class="w-full flex justify-center flex-col items-center" *ngIf="currentStep === 3">
         <h3 class="text-3xl">3. Charges et taxes</h3>
-        <form  class="w-[75%] flex flex-col gap-4 justify-between items-begin" [formGroup]="step3Form">
-            <app-input-d-square formControlName="chargesPersonnel" label="Charges de personnel" type="number"></app-input-d-square>
-            <app-input-d-square formControlName="impotsTaxes" label="Impôts, taxes" type="number"></app-input-d-square>
+        <form class="w-[75%] flex flex-col gap-4 justify-between items-begin" [formGroup]="step3Form">
+            <app-input-d-square formControlName="cp" label="Charges de personnel" type="number"></app-input-d-square>
+            <app-input-d-square formControlName="it" label="Impôts, taxes" type="number"></app-input-d-square>
+            <app-input-d-square formControlName="ao" label="Autres produits opérationnels" type="number"></app-input-d-square>
+            <app-input-d-square formControlName="co" label="Autres charges opérationnels" type="number"></app-input-d-square>
+            <app-input-d-square formControlName="dp" label="Dotations aux amortissements" type="number"></app-input-d-square>
+            <app-input-d-square formControlName="rp" label="Reprises aux provisions et aux pertes de valeurs" type="number"></app-input-d-square>
             <div class="flex justify-between">
                 <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="goToPreviousStep()">Précédent</button>
                 <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="goToNextStep()" [disabled]="step3Form.invalid">Suivant</button>
@@ -40,9 +43,9 @@
 
     <div class="w-full flex justify-center flex-col items-center" *ngIf="currentStep === 4">
         <h3 class="text-3xl">4. Résultats financiers</h3>
-        <form  class="w-[75%] flex flex-col gap-4 justify-between items-begin" [formGroup]="step4Form">
-            <app-input-d-square formControlName="produitsFinanciers" label="Produits financiers" type="number"></app-input-d-square>
-            <app-input-d-square formControlName="chargesFinancieres" label="Charges financières" type="number"></app-input-d-square>
+        <form class="w-[75%] flex flex-col gap-4 justify-between items-begin" [formGroup]="step4Form">
+            <app-input-d-square formControlName="pf" label="Produits financiers" type="number"></app-input-d-square>
+            <app-input-d-square formControlName="cf" label="Charges financières" type="number"></app-input-d-square>
             <div class="flex justify-between">
                 <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="goToPreviousStep()">Précédent</button>
                 <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="goToNextStep()" [disabled]="step4Form.invalid">Suivant</button>
@@ -52,9 +55,11 @@
 
     <div class="w-full flex justify-center flex-col items-center" *ngIf="currentStep === 5">
         <h3 class="text-3xl">5. Résultats exceptionnels</h3>
-        <form  class="w-[75%] flex flex-col gap-4 justify-between items-begin" [formGroup]="step5Form">
-            <app-input-d-square formControlName="produitsExceptionnels" label="Produits exceptionnels" type="number"></app-input-d-square>
-            <app-input-d-square formControlName="chargesExceptionnelles" label="Charges exceptionnelles" type="number"></app-input-d-square>
+        <form class="w-[75%] flex flex-col gap-4 justify-between items-begin" [formGroup]="step5Form">
+            <app-input-d-square formControlName="ie" label="Impôts exigibles sur résultat" type="number"></app-input-d-square>
+            <app-input-d-square formControlName="id" label="Impôts différés" type="number"></app-input-d-square>
+            <app-input-d-square formControlName="ep" label="Produits exceptionnels" type="number"></app-input-d-square>
+            <app-input-d-square formControlName="ec" label="Charges exceptionnelles" type="number"></app-input-d-square>
             <div class="flex justify-between">
                 <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="goToPreviousStep()">Précédent</button>
                 <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="goToNextStep()" [disabled]="step5Form.invalid">Suivant</button>
@@ -62,21 +67,10 @@
         </form>
     </div>
 
+    <!-- Step 6: Résumé et soumission -->
     <div class="w-full flex justify-center flex-col items-center" *ngIf="currentStep === 6">
-        <h3 class="text-3xl">6. Résultat consolidé</h3>
-        <form  class="w-[75%] flex flex-col gap-4 justify-between items-begin" [formGroup]="step6Form">
-            <app-input-d-square formControlName="partResultatsEquivalence" label="Part dans les résultats nets des sociétés mises en équivalence" type="number"></app-input-d-square>
-            <app-input-d-square formControlName="partMinoritaire" label="Dont part des minoritaires" type="number"></app-input-d-square>
-            <div class="flex justify-between">
-                <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="goToPreviousStep()">Précédent</button>
-                <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="goToNextStep()" [disabled]="step6Form.invalid">Suivant</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="w-full flex justify-center flex-col items-center" *ngIf="currentStep === 7">
-        <h3 class="text-3xl">7. Résumé et soumission</h3>
-        <pre>{{ getAllFormData() | json}}</pre>
+        <h3 class="text-3xl">6. Résumé et soumission</h3>
+        <pre>{{ getAllFormData() | json }}</pre>
         <div class="flex justify-between">
             <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="goToPreviousStep()">Précédent</button>
             <button class="bg-purple-700 text-white rounded-xl w-[200px] p-4 px-6" (click)="onSubmit()">Soumettre</button>

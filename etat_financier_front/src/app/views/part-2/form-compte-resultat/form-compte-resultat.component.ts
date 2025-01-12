@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {InputDSquareComponent} from "../../../atoms/input-d-square/input-d-square.component";
 import {JsonPipe, NgIf} from "@angular/common";
+import {CompteResultatService} from "../services/compte-resultat.service";
 
 @Component({
   selector: 'app-form-compte-resultat',
@@ -15,7 +16,7 @@ import {JsonPipe, NgIf} from "@angular/common";
   templateUrl: './form-compte-resultat.component.html',
   styleUrl: './form-compte-resultat.component.css'
 })
-export class FormCompteResultatComponent {
+export class FormCompteResultatComponent implements OnInit {
   currentStep: number = 1;
 
   step1Form: FormGroup;
@@ -23,38 +24,84 @@ export class FormCompteResultatComponent {
   step3Form: FormGroup;
   step4Form: FormGroup;
   step5Form: FormGroup;
-  step6Form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private cdr:CompteResultatService) {
     this.step1Form = this.fb.group({
-      chiffreAffaires: [null, [Validators.required, Validators.min(0)]],
-      productionStockee: [null, [Validators.min(0)]],
-      productionImmobilisee: [null, [Validators.min(0)]]
+      ca: [null, [Validators.required, Validators.min(0)]], // Chiffre d'affaires
+      ps: [null, [Validators.min(0)]], // Production stockée
+      pi: [null, [Validators.min(0)]], // Production immobilisée
     });
 
     this.step2Form = this.fb.group({
-      achatsConsommes: [null, [Validators.required, Validators.min(0)]],
-      servicesExterieurs: [null, [Validators.min(0)]]
+      ac: [null, [Validators.required, Validators.min(0)]], // Achats consommés
+      se: [null, [Validators.min(0)]], // Services extérieurs
     });
 
     this.step3Form = this.fb.group({
-      chargesPersonnel: [null, [Validators.required, Validators.min(0)]],
-      impotsTaxes: [null, [Validators.min(0)]]
+      cp: [null, [Validators.required, Validators.min(0)]], // Charges de personnel
+      it: [null, [Validators.min(0)]], // Impôts, taxes
+      ao: [null, [Validators.min(0)]], // Autres produits opérationnels
+      co: [null, [Validators.min(0)]], // Autres charges opérationnels
+      dp: [null, [Validators.min(0)]], // Dotations aux amortissements
+      rp: [null, [Validators.min(0)]], // Reprises aux provisions et aux pertes de valeurs
     });
 
     this.step4Form = this.fb.group({
-      produitsFinanciers: [null, [Validators.min(0)]],
-      chargesFinancieres: [null, [Validators.min(0)]]
+      pf: [null, [Validators.min(0)]], // Produits financiers
+      cf: [null, [Validators.min(0)]], // Charges financières
     });
 
     this.step5Form = this.fb.group({
-      produitsExceptionnels: [null, [Validators.min(0)]],
-      chargesExceptionnelles: [null, [Validators.min(0)]]
+      ie: [null, [Validators.min(0)]], // Impôts exigibles sur résultat
+      id: [null, [Validators.min(0)]], // Impôts différés
+      ep: [null, [Validators.min(0)]], // Produits exceptionnels
+      ec: [null, [Validators.min(0)]], // Charges exceptionnelles
     });
 
-    this.step6Form = this.fb.group({
-      partResultatsEquivalence: [null, [Validators.min(0)]],
-      partMinoritaire: [null, [Validators.min(0)]]
+  }
+
+  ngOnInit(): void {
+    this.cdr.getFinancialDataByYear().subscribe(
+        (data) => {
+          this.patchFormValues(data);
+        },
+        (error) => {
+          console.error('Error fetching financial data:', error);
+        }
+    );
+  }
+
+  patchFormValues(data: any) {
+    this.step1Form.patchValue({
+      ca: data.ca,
+      ps: data.ps,
+      pi: data.pi,
+    });
+
+    this.step2Form.patchValue({
+      ac: data.ac,
+      se: data.se,
+    });
+
+    this.step3Form.patchValue({
+      cp: data.cp,
+      it: data.it,
+      ao: data.ao,
+      co: data.co,
+      dp: data.dp,
+      rp: data.rp,
+    });
+
+    this.step4Form.patchValue({
+      pf: data.pf,
+      cf: data.cf,
+    });
+
+    this.step5Form.patchValue({
+      ie: data.ie,
+      id: data.id,
+      ep: data.ep,
+      ec: data.ec,
     });
   }
 
@@ -77,7 +124,6 @@ export class FormCompteResultatComponent {
       ...this.step3Form.value,
       ...this.step4Form.value,
       ...this.step5Form.value,
-      ...this.step6Form.value
     };
   }
 
@@ -87,10 +133,16 @@ export class FormCompteResultatComponent {
         this.step2Form.valid &&
         this.step3Form.valid &&
         this.step4Form.valid &&
-        this.step5Form.valid &&
-        this.step6Form.valid
+        this.step5Form.valid
     ) {
       console.log("Formulaire soumis avec succès :", this.getAllFormData());
+      this.cdr.save(this.getAllFormData()).subscribe({
+        next:(response) => {
+          console.log(response);
+        },error:(error) => {
+          alert(error);
+        }
+      })
     } else {
       console.error("Veuillez remplir correctement toutes les étapes.");
     }
