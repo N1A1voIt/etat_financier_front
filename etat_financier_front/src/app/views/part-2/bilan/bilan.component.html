@@ -10,14 +10,14 @@
                         <ng-container matColumnDef="label">
                             <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Rubrique </mat-header-cell>
                             <mat-cell *matCellDef="let element" [ngClass]="{ 'important-rubrique': element.isImportant }">
-                                <span [style.margin-left.px]="element.level * 20" class="mono-sans-thin">{{ element.label }}</span>
+                                <span [style.margin-left.px]="element.level * 20" [ngClass]="{ 'font-bold text-2xl': element.label.includes('TOTAL') }" class="mono-sans-thin">{{ element.label }}</span>
                             </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="amount">
                             <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Montant ($) </mat-header-cell>
                             <mat-cell *matCellDef="let element" [style.margin-left.px]="element.level * 20" [ngClass]="{ 'important-rubrique': element.isImportant }">
-                                {{ element.amount === 0 ? 0 : (element.amount | number: '1.2-2') }}
+                                {{ element.amount === 0 ? '' : (element.amount | number: '1.2-2') }}
                             </mat-cell>
                         </ng-container>
 
@@ -36,14 +36,15 @@
                         <ng-container matColumnDef="label">
                             <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Rubrique </mat-header-cell>
                             <mat-cell *matCellDef="let element" [ngClass]="{ 'important-rubrique': element.isImportant }">
-                                <span [style.margin-left.px]="element.level * 20"  class="mono-sans-thin">{{ element.label }}</span>
+                                <span [style.margin-left.px]="element.level * 20"  class="mono-sans-thin" [ngClass]="{ 'font-bold text-2xl': element.label.includes('TOTAL') }" >{{ element.label }}</span>
                             </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="amount">
                             <mat-header-cell *matHeaderCellDef class="mono-sans-thin"> Montant ($) </mat-header-cell>
                             <mat-cell *matCellDef="let element" [style.margin-left.px]="element.level * 20" [ngClass]="{ 'important-rubrique': element.isImportant }">
-                                {{ element.amount === 0 ? 0 : (element.amount | number: '1.2-2') }}
+                                {{ !element.label.includes('TOTAL') &&  element.amount === 0 ? '' : (element.amount | number: '1.2-2') }}
+                                {{ element.label.includes('TOTAL') &&  element.amount === 0 ? 0 : ''}}
                             </mat-cell>
                         </ng-container>
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -43,9 +44,11 @@ public class RubriqueService {
         rubriqueCpl.setIdType(5L);
         rubriqueCpl.setRubrique("Résultat net");
         Long idMere = 1L;
+        passifs.sort(Comparator.comparing(RubriqueCpl::getIdRubrique).reversed());
         for (int i = 0; i < passifs.size(); i++) {
             if (passifs.get(i).getIdType() == 5L) idMere = passifs.get(i).getIdRubrique();
         }
+        passifs.sort(Comparator.comparing(RubriqueCpl::getIdRubrique));
         rubriqueCpl.setIdRubriqueMere(idMere);
         return rubriqueCpl;
     }

@@ -69,6 +69,7 @@ export class TreeComponent implements OnChanges {
       showAddForm: false,
       expanded: false
     };
+    if (newRubrique.estStock == null) {newRubrique.estStock = false;}
 
     if (!parent.children) {
       parent.children = [];

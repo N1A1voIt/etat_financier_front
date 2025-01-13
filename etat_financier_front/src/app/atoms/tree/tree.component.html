@@ -4,7 +4,7 @@
         <li *ngFor="let rubrique of rubriques" class="pt-3 pb-6">
             <div class="flex gap-8 items-center">
                 {{ rubrique.rubrique }} {{ rubrique.montant }}
-                <a (click)="showAddForm(rubrique)" class="text-blue-400 underline">Ajoutez une rubrique fille</a>
+                <a *ngIf="!rubrique.montant || rubrique.montant==0" (click)="showAddForm(rubrique)" class="text-blue-400 underline">Ajoutez une rubrique fille</a>
                 <div *ngIf="rubrique.children?.length" class="rounded rounded-full bg-gray-300 w-[30px] h-[30px] flex justify-center items-center cursor-pointer text-xl text-white" (click)="rubrique.expanded = !rubrique.expanded">
                     <span>{{ rubrique.expanded ? '-' : '+' }}</span>
                 </div>

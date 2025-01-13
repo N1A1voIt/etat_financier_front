@@ -22,7 +22,7 @@ public class FinancialDataController {
     }
 
     @GetMapping("/{year}")
-    public ResponseEntity<?> getFinancialData(@PathVariable Integer year) {
+    public ResponseEntity<?> getFinancialData(@PathVariable("year") Integer year) {
         try{
         return ResponseEntity.ok(financialDataService.findById(year));
         }catch (Exception e){
