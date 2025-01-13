@@ -6,6 +6,11 @@
         <div *ngIf="isLoading" class="cssload-container">
             <div class="cssload-speeding-wheel"></div>
         </div>
-        <app-collapsible *ngFor="let res of result" [indicator]="res"></app-collapsible>
+        <app-collapsible *ngFor="let res of result.items" [indicator]="res"></app-collapsible>
+    </div>
+    <div class="p-3 border border-black rounded-3xl w-[800px] ">
+        <h1 class="text-4xl">Solution globale</h1>
+        <br>
+        <p CLASS="text-xl">{{result.globalSolution}}</p>
     </div>
 </div>

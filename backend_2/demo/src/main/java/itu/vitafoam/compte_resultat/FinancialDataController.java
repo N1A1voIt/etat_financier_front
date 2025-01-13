@@ -22,10 +22,13 @@ public class FinancialDataController {
     }
 
     @GetMapping("/{year}")
-    public ResponseEntity<FinancialData> getFinancialData(@PathVariable Integer year) {
-        return financialDataService.findById(year)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.badRequest().build());
+    public ResponseEntity<?> getFinancialData(@PathVariable Integer year) {
+        try{
+        return ResponseEntity.ok(financialDataService.findById(year));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(e);
+        }
     }
     @GetMapping("/cdr")
     public ResponseEntity<?> compteDeResultat(){
