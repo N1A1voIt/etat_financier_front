@@ -102,7 +102,7 @@ public class AiService {
         textPart.put("text", "You are a financial analyst. Based on the following financial ratios, the balance sheets and the income statement, provide a detailed interpretation of the company's financial health. "
                 + "Explain what each ratio means, whether it is good or bad, and provide actionable recommendations for improvement ,overall tell me what to do with the elements of my balance sheets inside the recommendations.In the solutions use the amounts to explain your solution "
                 + "I want you to return an array of JSON with the following fields for each member: "
-                + "String label; BigDecimal ratio; String interpretation; String solution. When you are making interpretations avoid using id inside answers but use the names ,the labels or the rubriques I mean use the strings"
+                + "String label; BigDecimal ratio; String interpretation; String solution; and next to the array of JSON add a String globalSolution so the pattern will look like this {items:[],globalSolution:}. When you are making interpretations avoid using id inside answers but use the names ,the labels or the rubriques I mean use the strings"
                 + "Only return the JSON. Make the results in French. Ratios:\n" + query + " Balance sheets:\n" + balanceSheet+" Income statement:\n"+compteResultat);
 
         parts.add(textPart);
