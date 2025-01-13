@@ -1,3 +1,47 @@
 :host {
     width:100%
 }
+/* Treeview container */
+.treeview {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+/* Treeview item */
+.treeview li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+/* Vertical line */
+.treeview li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background-color: #ccc;
+}
+
+/* Horizontal line */
+.treeview li::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 20px;
+    height: 1px;
+    background-color: black;
+}
+
+/* Remove vertical line for the last child */
+.treeview li:last-child::before {
+    height: 10px;
+}
+
+/* Remove horizontal line for root items */
+.treeview > li::after {
+    display: none;
+}

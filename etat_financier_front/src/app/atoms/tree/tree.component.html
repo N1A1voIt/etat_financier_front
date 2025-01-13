@@ -1,29 +1,33 @@
-<ul class="ml-12 p-3 border border-black rounded-2xl">
-    <li *ngFor="let rubrique of rubriques" class="pt-3 pb-6">
-        <div class="flex gap-8 items-center">
-            {{ rubrique.rubrique }} {{ rubrique.montant }}
-            <a (click)="showAddForm(rubrique)" class="text-blue-400 underline">Ajoutez une rubrique fille</a>
-            <div *ngIf="rubrique.children?.length" class="rounded rounded-full bg-gray-300 w-[30px] h-[30px] flex justify-center items-center cursor-pointer text-xl text-white" (click)="rubrique.expanded = !rubrique.expanded">
-                <span>{{ rubrique.expanded ? '-' : '+' }}</span>
-            </div>
-        </div>
-        <div *ngIf="rubrique.showAddForm">
-            <form [formGroup]="addForm" (ngSubmit)="addRubrique(rubrique)" class="ml-12 flex flex-col gap-3">
-                <app-input-d-square formControlName="rubrique" label="Nom de la rubrique" type="text"></app-input-d-square>
-                <app-input-d-square formControlName="montant" label="Montant" type="number"></app-input-d-square>
-                <input
-                        formControlName="estStock"
-                        label="Est stock"
-                        type="checkbox"
-                        [value]="true"> Est stock
-                <div class="flex gap-2">
-                    <button class="bg-blue-400 text-white rounded-xl w-[200px] p-2 px-3" type="submit" >Ajouter</button>
-                    <button class="bg-blue-400 text-white rounded-xl w-[200px] p-2 px-3" type="button" (click)="closeAddForm(rubrique)">Fermer</button>
+<div class="treeview">
+
+    <ul class="ml-12 p-3 rounded-2xl">
+        <li *ngFor="let rubrique of rubriques" class="pt-3 pb-6">
+            <div class="flex gap-8 items-center">
+                {{ rubrique.rubrique }} {{ rubrique.montant }}
+                <a (click)="showAddForm(rubrique)" class="text-blue-400 underline">Ajoutez une rubrique fille</a>
+                <div *ngIf="rubrique.children?.length" class="rounded rounded-full bg-gray-300 w-[30px] h-[30px] flex justify-center items-center cursor-pointer text-xl text-white" (click)="rubrique.expanded = !rubrique.expanded">
+                    <span>{{ rubrique.expanded ? '-' : '+' }}</span>
                 </div>
-            </form>
-        </div>
-        <div *ngIf="rubrique.expanded">
-            <app-tree [rubriques]="rubrique.children"></app-tree>
-        </div>
-    </li>
-</ul>
+            </div>
+            <div *ngIf="rubrique.showAddForm">
+                <form [formGroup]="addForm" (ngSubmit)="addRubrique(rubrique)" class="ml-12 flex flex-col gap-3">
+                    <app-input-d-square formControlName="rubrique" label="Nom de la rubrique" type="text"></app-input-d-square>
+                    <app-input-d-square formControlName="montant" label="Montant" type="number"></app-input-d-square>
+                    <input
+                            formControlName="estStock"
+                            label="Est stock"
+                            type="checkbox"
+                            [value]="true"> Est stock
+                    <div class="flex gap-2">
+                        <button class="bg-blue-400 text-white rounded-xl w-[200px] p-2 px-3" type="submit" >Ajouter</button>
+                        <button class="bg-blue-400 text-white rounded-xl w-[200px] p-2 px-3" type="button" (click)="closeAddForm(rubrique)">Fermer</button>
+                    </div>
+                </form>
+            </div>
+            <div *ngIf="rubrique.expanded">
+                <app-tree [rubriques]="rubrique.children"></app-tree>
+            </div>
+        </li>
+    </ul>
+
+</div>
